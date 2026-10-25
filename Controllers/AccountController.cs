@@ -80,6 +80,7 @@ namespace MobileShop.Controllers
                 if (string.IsNullOrEmpty(user.Role))
                 {
                     user.Role = "Customer";
+                    
                 }
 
                 _context.Users.Add(user);
