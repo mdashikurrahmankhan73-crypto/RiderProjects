@@ -1,98 +1,304 @@
-﻿@model IEnumerable<MobileShop.Models.Product>
-
-@{
-    Layout = "_Layout";
-    ViewData["Title"] = "Home Page - TechShop";
+﻿@{
+    ViewData["Title"] = "Home Page - GULSHAN TECHSHOP";
 }
 
-<div class="pb-5">
-    <div class="position-relative bg-dark overflow-hidden mb-5" style="min-height: 350px;">
-        <div class="position-absolute w-100 h-100"
-             style="background-image: url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center; opacity: 0.4;">
+<!-- 1. Automatic Smooth 5-Product Banner Slider -->
+<div id="techShopSlider" class="carousel slide carousel-fade shadow-lg rounded-4 overflow-hidden my-4" data-bs-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#techShopSlider" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#techShopSlider" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#techShopSlider" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#techShopSlider" data-bs-slide-to="3"></button>
+        <button type="button" data-bs-target="#techShopSlider" data-bs-slide-to="4"></button>
+    </div>
+
+    <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div class="carousel-item active" style="background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; height: 420px;">
+            <div class="container h-100 d-flex align-items-center">
+                <div class="text-white col-md-7 py-5">
+                    <span class="badge bg-primary mb-2 px-3 py-2 rounded-pill">EXCLUSIVE DEALS</span>
+                    <h1 class="display-5 fw-bold text-white">Upgrade Your Digital Lifestyle</h1>
+                    <p class="lead text-light">Discover top-rated smartphones, laptops, and authentic gadgets at unmissable prices.</p>
+                    <a href="#featured-products" class="btn btn-warning btn-lg fw-bold text-dark px-4 mt-2 shadow">
+                        Explore Products <i class="fa-solid fa-arrow-down ms-1"></i>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="container position-relative z-1 d-flex align-items-center" style="min-height: 350px;">
-            <div class="text-white py-5" style="max-width: 600px;">
-                <span class="badge bg-primary mb-2 px-3 py-2 text-uppercase fw-bold">Exclusive Deals</span>
-                <h1 class="fw-bold display-4 mb-3">Upgrade Your Digital Lifestyle</h1>
-                <p class="lead text-light mb-4">Discover top-rated smartphones, laptops, and authentic gadgets at unmissable prices.</p>
-                <a href="#product-section" class="btn btn-warning fw-bold px-4 py-3 rounded-pill shadow">
-                    Explore Products <i class="fa-solid fa-arrow-down ms-2"></i>
-                </a>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item" style="background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; height: 420px;">
+            <div class="container h-100 d-flex align-items-center">
+                <div class="text-white col-md-7 py-5">
+                    <span class="badge bg-success mb-2 px-3 py-2 rounded-pill">NEW ARRIVALS</span>
+                    <h1 class="display-5 fw-bold text-white">Latest Flagship Smartphones</h1>
+                    <p class="lead text-light">Experience next-level photography, blazing-fast speed, and stunning OLED displays.</p>
+                    <a asp-controller="Home" asp-action="Marketplace" class="btn btn-warning btn-lg fw-bold text-dark px-4 mt-2 shadow">
+                        Shop Smartphones <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item" style="background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; height: 420px;">
+            <div class="container h-100 d-flex align-items-center">
+                <div class="text-white col-md-7 py-5">
+                    <span class="badge bg-danger mb-2 px-3 py-2 rounded-pill">CORPORATE OFFERS</span>
+                    <h1 class="display-5 fw-bold text-white">Powerful Laptops for Work</h1>
+                    <p class="lead text-light">Boost your productivity with high-performance processors and sleek lightweight designs.</p>
+                    <a asp-controller="Home" asp-action="Corporate" class="btn btn-warning btn-lg fw-bold text-dark px-4 mt-2 shadow">
+                        View Corporate Deals <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="carousel-item" style="background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1526738549149-8e07eca6c147?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; height: 420px;">
+            <div class="container h-100 d-flex align-items-center">
+                <div class="text-white col-md-7 py-5">
+                    <span class="badge bg-info text-dark mb-2 px-3 py-2 rounded-pill">MEGA DISCOUNTS</span>
+                    <h1 class="display-5 fw-bold text-white">Special Festive Offers</h1>
+                    <p class="lead text-light">Grab massive discounts on smartwatches, audio devices, and trendy tech accessories.</p>
+                    <a asp-controller="Home" asp-action="Offers" class="btn btn-warning btn-lg fw-bold text-dark px-4 mt-2 shadow">
+                        Check Offers <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="carousel-item" style="background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; height: 420px;">
+            <div class="container h-100 d-flex align-items-center">
+                <div class="text-white col-md-7 py-5">
+                    <span class="badge bg-warning text-dark mb-2 px-3 py-2 rounded-pill">TECH EVENTS</span>
+                    <h1 class="display-5 fw-bold text-white">Join Upcoming Tech Events</h1>
+                    <p class="lead text-light">Register now for exclusive product showcases, developer workshops, and community meetups.</p>
+                    <a asp-controller="Home" asp-action="Event" class="btn btn-warning btn-lg fw-bold text-dark px-4 mt-2 shadow">
+                        Join Event <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="container my-4" id="product-section">
-        <div class="d-flex align-items-center justify-content-between mb-4 border-bottom pb-2">
-            <div>
-                <h3 class="fw-bold text-dark m-0">Featured Products</h3>
-                <p class="text-muted small m-0">Top products selected for you</p>
-            </div>
-            <span class="badge bg-dark px-3 py-2 fs-6">20 Items Available</span>
-        </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#techShopSlider" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#techShopSlider" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
-            @if (Model != null && Model.Any())
-            {
-                @foreach (var item in Model)
-                {
-                    <div class="col">
-                        <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden product-card bg-white">
-                            <div class="bg-light p-3 text-center position-relative d-flex align-items-center justify-content-center" style="height: 190px;">
-                                <img src="@item.MainImageUrl" class="img-fluid h-100" style="object-fit: contain;" alt="@item.Name" />
-                            </div>
-                            <div class="card-body d-flex flex-column justify-content-between p-3">
-                                <div>
-                                    <span class="text-uppercase text-muted fw-bold d-block mb-1" style="font-size: 0.7rem;">@item.Model</span>
-                                    <h6 class="fw-bold text-dark text-truncate mb-2">@item.Name</h6>
-                                </div>
-                                <div class="mt-2">
-                                    <div class="mb-3">
-                                        <span class="fw-bold text-dark fs-5">৳@item.SalePrice</span>
-                                    </div>
-                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id" 
-                                       class="btn btn-outline-primary btn-sm w-100 rounded-pill fw-bold py-2 shadow-sm d-flex align-items-center justify-content-center gap-1">
-                                        <i class="fa-regular fa-eye"></i> View Details
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                }
-            }
-            else
-            {
-                @for (int i = 1; i <= 20; i++)
-                {
-                    <div class="col">
-                        <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden product-card bg-white">
-                            <div class="bg-light p-3 text-center position-relative d-flex align-items-center justify-content-center" style="height: 190px;">
-                                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=400&q=80" class="img-fluid h-100" style="object-fit: contain;" alt="Sample" />
-                            </div>
-                            <div class="card-body d-flex flex-column justify-content-between p-3">
-                                <div>
-                                    <span class="text-uppercase text-muted fw-bold d-block mb-1" style="font-size: 0.7rem;">Tech Device</span>
-                                    <h6 class="fw-bold text-dark text-truncate mb-2">Smart Gadget Model @i</h6>
-                                </div>
-                                <div class="mt-2">
-                                    <div class="mb-3">
-                                        <span class="fw-bold text-dark fs-5">৳@(25000 + (i * 1200))</span>
-                                    </div>
-                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@i" 
-                                       class="btn btn-outline-primary btn-sm w-100 rounded-pill fw-bold py-2 shadow-sm d-flex align-items-center justify-content-center gap-1">
-                                        <i class="fa-regular fa-eye"></i> View Details
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                }
-            }
+<!-- 2. Features Highlights -->
+<div class="container my-5">
+    <div class="row g-4 text-center">
+        <div class="col-md-4">
+            <div class="p-4 border-0 shadow-sm rounded-4 bg-light h-100">
+                <i class="fa-solid fa-truck-fast fa-3x text-primary mb-3"></i>
+                <h5 class="fw-bold">Fast Delivery</h5>
+                <p class="text-muted mb-0">Get your products delivered safely to your doorstep in record time.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 border-0 shadow-sm rounded-4 bg-light h-100">
+                <i class="fa-solid fa-shield-halved fa-3x text-success mb-3"></i>
+                <h5 class="fw-bold">100% Authentic</h5>
+                <p class="text-muted mb-0">All products are sourced directly from official brand manufacturers.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 border-0 shadow-sm rounded-4 bg-light h-100">
+                <i class="fa-solid fa-headset fa-3x text-danger mb-3"></i>
+                <h5 class="fw-bold">24/7 Support</h5>
+                <p class="text-muted mb-0">Our support team is always ready to assist you with your queries.</p>
+            </div>
         </div>
     </div>
 </div>
 
-<style>
-    .product-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
-    .product-card:hover { transform: translateY(-5px); box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.1) !important; }
-</style>
+<!-- 3. Featured 20 Products Grid -->
+<div class="container my-5" id="featured-products">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold mb-1">Featured Tech Products</h2>
+            <p class="text-muted mb-0">Explore our wide range of gadgets and accessories</p>
+        </div>
+        <a asp-controller="Home" asp-action="Marketplace" class="btn btn-outline-primary fw-bold">View All Products <i class="fa-solid fa-arrow-right ms-1"></i></a>
+    </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+        @for (int i = 1; i <= 20; i++)
+        {
+            var productNames = new string[] {
+                "iPhone 15 Pro Max", "Samsung Galaxy S24 Ultra", "MacBook Pro M3", "Dell XPS 15 Laptop",
+                "Sony WH-1000XM5 Headphones", "Apple Watch Series 9", "iPad Air M2", "Asus ROG Phone 8",
+                "Google Pixel 8 Pro", "AirPods Pro 2nd Gen", "Logitech MX Master 3S", "Samsung Galaxy Tab S9",
+                "PlayStation 5 Slim", "Xbox Series X", "Anker PowerBank 24000mAh", "JBL Charge 5 Speaker",
+                "Xiaomi Smart Band 8", "Razer BlackWidow Keyboard", "Canon EOS R6 Camera", "LG UltraGear Gaming Monitor"
+            };
+            var prices = new decimal[] { 1199, 1299, 1599, 1499, 399, 429, 599, 999, 899, 249, 99, 799, 499, 499, 89, 179, 49, 139, 2299, 349 };
+            var images = new string[] {
+                "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400",
+                "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400",
+                "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400",
+                "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400",
+                "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400",
+                "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400",
+                "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400",
+                "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=400",
+                "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400",
+                "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400",
+                "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=400",
+                "https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=400",
+                "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=400",
+                "https://images.unsplash.com/photo-1621259182978-fbf93132d53d?w=400",
+                "https://images.unsplash.com/photo-1609592424009-54877797742d?w=400",
+                "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400",
+                "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=400",
+                "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400",
+                "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400",
+                "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400"
+            };
+
+            int index = (i - 1) % 20;
+
+            <div class="col">
+                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden product-card">
+                    <img src="@images[index]" class="card-img-top" alt="@productNames[index]" style="height: 180px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column p-3">
+                        <span class="badge bg-light text-primary border mb-2 w-auto me-auto" style="font-size: 10px;">Official Warranty</span>
+                        <h6 class="card-title fw-bold text-dark text-truncate">@productNames[index]</h6>
+                        <div class="text-warning mb-2" style="font-size: 12px;">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <span class="text-muted ms-1">(4.8)</span>
+                        </div>
+                        <h5 class="fw-bold text-primary mb-3">$@prices[index]</h5>
+                        
+                        <!-- Add to Cart & Buy Now Buttons -->
+                        <div class="mt-auto d-flex flex-column gap-2">
+                            <button type="button" class="btn btn-primary btn-sm fw-bold w-100 py-2 add-to-cart-btn" 
+                                    data-name="@productNames[index]" data-price="@prices[index]" data-img="@images[index]">
+                                <i class="fa-solid fa-cart-plus me-1"></i> Add to Cart
+                            </button>
+                            <a asp-controller="Account" asp-action="Login" class="btn btn-warning btn-sm fw-bold text-dark w-100 py-2">
+                                <i class="fa-solid fa-bolt me-1"></i> Buy Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Right Side Automatic Cart Offcanvas Sidebar -->
+<div class="offcanvas offcanvas-end shadow-lg" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+    <div class="offcanvas-header bg-primary text-white">
+        <h5 class="offcanvas-title fw-bold" id="cartOffcanvasLabel">
+            <i class="fa-solid fa-cart-shopping me-2"></i> Your Cart (<span id="cartCount">0</span>)
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+        <!-- Cart Items List Container -->
+        <div id="cartItemsList" class="flex-grow-1 overflow-auto mb-3">
+            <div class="text-center text-muted py-5" id="emptyCartMessage">
+                <i class="fa-solid fa-basket-shopping fa-3x mb-3 text-secondary"></i>
+                <p>Your cart is currently empty.</p>
+            </div>
+        </div>
+
+        <!-- Cart Summary & Buy Now Section -->
+        <div class="border-top pt-3">
+            <div class="d-flex justify-content-between mb-3 fs-5 fw-bold">
+                <span>Total:</span>
+                <span id="cartTotalPrice" class="text-primary">$0.00</span>
+            </div>
+            <div class="d-grid gap-2">
+                <a asp-controller="Account" asp-action="Login" class="btn btn-warning btn-lg fw-bold text-dark py-2 shadow-sm">
+                    <i class="fa-solid fa-bag-shopping me-2"></i> Buy Now (Checkout)
+                </a>
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="offcanvas">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript for Add to Cart & Offcanvas Interaction -->
+@section Scripts {
+    <script>
+        let cart = [];
+
+        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const name = this.getAttribute('data-name');
+                const price = parseFloat(this.getAttribute('data-price'));
+                const img = this.getAttribute('data-img');
+
+                // Check if product already exists in cart
+                const existingItem = cart.find(item => item.name === name);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({ name, price, img, quantity: 1 });
+                }
+
+                updateCartUI();
+
+                // Open the right-side cart offcanvas automatically
+                const cartOffcanvasElement = document.getElementById('cartOffcanvas');
+                const cartOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(cartOffcanvasElement);
+                cartOffcanvas.show();
+            });
+        });
+
+        function updateCartUI() {
+            const cartItemsList = document.getElementById('cartItemsList');
+            const cartCount = document.getElementById('cartCount');
+            const cartTotalPrice = document.getElementById('cartTotalPrice');
+
+            cartCount.innerText = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+            if (cart.length === 0) {
+                cartItemsList.innerHTML = `
+                    <div class="text-center text-muted py-5">
+                        <i class="fa-solid fa-basket-shopping fa-3x mb-3 text-secondary"></i>
+                        <p>Your cart is currently empty.</p>
+                    </div>`;
+                cartTotalPrice.innerText = '$0.00';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                html += `
+                    <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
+                        <img src="${item.img}" class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                        <div class="flex-grow-1">
+                            <h6 class="fw-bold mb-1 text-truncate" style="max-width: 150px;">${item.name}</h6>
+                            <p class="small text-muted mb-0">$${item.price} x ${item.quantity}</p>
+                        </div>
+                        <button class="btn btn-sm text-danger" onclick="removeItem(${index})"><i class="fa-solid fa-trash"></i></button>
+                    </div>`;
+            });
+
+            cartItemsList.innerHTML = html;
+            cartTotalPrice.innerText = `$${total.toFixed(2)}`;
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+    </script>
+}

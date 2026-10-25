@@ -164,3 +164,4 @@
 /home/spiderman/RiderProjects/MobileShop/MobileShop/obj/Debug/net8.0/MobileShop.pdb
 /home/spiderman/RiderProjects/MobileShop/MobileShop/obj/Debug/net8.0/MobileShop.genruntimeconfig.cache
 /home/spiderman/RiderProjects/MobileShop/MobileShop/obj/Debug/net8.0/ref/MobileShop.dll
+/home/spiderman/RiderProjects/MobileShop/MobileShop/obj/Debug/net8.0/MobileShop.sourcelink.json

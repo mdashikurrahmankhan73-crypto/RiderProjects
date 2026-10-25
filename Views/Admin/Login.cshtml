@@ -1,46 +1,96 @@
 @{
-    Layout = "_Layout";
-    ViewData["Title"] = "Admin Login";
+    ViewData["Title"] = "Admin Portal - GULSHAN TECHSHOP";
 }
 
-<div class="py-5 bg-light min-vh-100 d-flex align-items-center">
-    <div class="container" style="max-width: 450px;">
-        
-        <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white text-center">
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
             
-            <!-- লক আইকন -->
-            <div class="bg-light rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4" style="width: 70px; height: 70px;">
-                <span class="fs-2">🔐</span>
-            </div>
-
-            <h3 class="fw-bold text-dark mb-1">অ্যাডমিন লগইন</h3>
-            <p class="text-muted small mb-4">প্যানেলে প্রবেশ করতে সঠিক সিকিউরিটি তথ্য প্রদান করুন।</p>
-
-            <!-- এরর মেসেজ অ্যালার্ট বার -->
-            @if (ViewBag.ErrorMessage != null)
+            <!-- Notification Alert -->
+            @if (TempData["SuccessMessage"] != null)
             {
-                <div class="alert alert-danger rounded-3 small py-2 mb-3" role="alert">
-                    ❌ @ViewBag.ErrorMessage
+                <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                    <i class="fa-solid fa-circle-check me-2"></i>@TempData["SuccessMessage"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                    <i class="fa-solid fa-triangle-exclamation me-2"></i>@TempData["ErrorMessage"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             }
 
-            <form asp-controller="Admin" asp-action="Login" method="post">
-                <div class="text-start mb-3">
-                    <label class="form-label small fw-bold text-secondary">ইউজারনেম (Username)</label>
-                    <input type="text" name="username" class="form-control border-secondary py-2" required placeholder="যেমন: admin" />
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="card-header bg-primary text-white text-center py-4">
+                    <i class="fa-solid fa-user-shield fa-3x mb-2"></i>
+                    <h4 class="fw-bold mb-0">Admin Access Portal</h4>
+                    <p class="small text-white-50 mb-0">Manage GULSHAN TECHSHOP Products & Content</p>
                 </div>
+                
+                <div class="card-body p-4">
+                    <!-- Nav Tabs for Login and Sign Up -->
+                    <ul class="nav nav-pills nav-justified mb-4" id="adminAuthTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active fw-bold" id="login-tab" data-bs-toggle="tab" data-bs-target="#login-panel" type="button" role="tab">
+                                <i class="fa-solid fa-right-to-bracket me-2"></i>Login
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link fw-bold" id="register-tab" data-bs-toggle="tab" data-bs-target="#register-panel" type="button" role="tab">
+                                <i class="fa-solid fa-user-plus me-2"></i>Sign Up
+                            </button>
+                        </li>
+                    </ul>
 
-                <div class="text-start mb-4">
-                    <label class="form-label small fw-bold text-secondary">পাসওয়ার্ড (Password)</label>
-                    <input type="password" name="password" class="form-control border-secondary py-2" required placeholder="••••••••" />
+                    <div class="tab-content" id="adminAuthTabContent">
+                        
+                        <!-- LOGIN FORM -->
+                        <div class="tab-pane fade show active" id="login-panel" role="tabpanel">
+                            <form asp-controller="Admin" asp-action="Login" method="post">
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold"><i class="fa-solid fa-envelope me-1"></i> Admin Gmail / Email</label>
+                                    <input type="email" name="Email" class="form-control form-control-lg" placeholder="admin@gulshan.com" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold"><i class="fa-solid fa-key me-1"></i> Password</label>
+                                    <input type="password" name="Password" class="form-control form-control-lg" placeholder="••••••••" required />
+                                </div>
+                                <div class="d-grid mt-4">
+                                    <button type="submit" class="btn btn-primary btn-lg fw-bold shadow-sm">
+                                        Login to Admin Panel <i class="fa-solid fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- SIGN UP FORM -->
+                        <div class="tab-pane fade" id="register-panel" role="tabpanel">
+                            <form asp-controller="Admin" asp-action="Register" method="post">
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold"><i class="fa-solid fa-user me-1"></i> Full Name</label>
+                                    <input type="text" name="FullName" class="form-control form-control-lg" placeholder="Md. Ashikur Rahman" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold"><i class="fa-solid fa-envelope me-1"></i> Admin Gmail</label>
+                                    <input type="email" name="Email" class="form-control form-control-lg" placeholder="your.name@gmail.com" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold"><i class="fa-solid fa-lock me-1"></i> Password</label>
+                                    <input type="password" name="Password" class="form-control form-control-lg" placeholder="At least 6 characters" required />
+                                </div>
+                                <div class="d-grid mt-4">
+                                    <button type="submit" class="btn btn-success btn-lg fw-bold shadow-sm">
+                                        Create Admin Account <i class="fa-solid fa-check ms-2"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
                 </div>
-
-                <button type="submit" class="btn btn-thalia w-100 py-2.5 rounded-pill fw-bold shadow-sm text-white">
-                    লগইন করুন
-                </button>
-            </form>
-
+            </div>
         </div>
-        
     </div>
 </div>

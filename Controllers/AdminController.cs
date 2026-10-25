@@ -1,58 +1,66 @@
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MobileShop.Data;
+using Microsoft.AspNetCore.Http;
 using MobileShop.Models;
-using System.Linq;
 
 namespace MobileShop.Controllers
 {
     public class AdminController : Controller
     {
-        private readonly ApplicationDbContext _context;
-
-        public AdminController(ApplicationDbContext context)
+        // GET: /Admin/Login
+        [HttpGet]
+        public IActionResult Login()
         {
-            _context = context;
+            return View();
+        }
+
+        // POST: /Admin/Login
+        [HttpPost]
+        public IActionResult Login(AdminLoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Dummy Admin verification (আপনি চাইলে এখানে DB check করতে পারেন)
+                if (model.Email == "admin@gulshan.com" && model.Password == "admin123")
+                {
+                    HttpContext.Session.SetString("UserRole", "Admin");
+                    HttpContext.Session.SetString("UserName", "Admin");
+                    TempData["SuccessMessage"] = "Successfully Logged In as Admin!";
+                    return RedirectToAction("Dashboard");
+                }
+                
+                // সাধারণ সেশন টেস্টের জন্য
+                HttpContext.Session.SetString("UserRole", "Admin");
+                HttpContext.Session.SetString("UserName", model.Email.Split('@')[0]);
+                TempData["SuccessMessage"] = "Successfully Logged In!";
+                return RedirectToAction("Dashboard");
+            }
+
+            return View(model);
+        }
+
+        // POST: /Admin/Register
+        [HttpPost]
+        public IActionResult Register(AdminRegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // এখানে ডাটাবেজে সেভ করার কোড যুক্ত করবেন
+                TempData["SuccessMessage"] = "Admin Account Created Successfully! Please Login.";
+                return RedirectToAction("Login");
+            }
+            TempData["ErrorMessage"] = "Registration failed. Please check the inputs.";
+            return RedirectToAction("Login");
         }
 
         // GET: /Admin/Dashboard
         public IActionResult Dashboard()
         {
-            var products = _context.Products.ToList();
-            ViewBag.Orders = _context.Orders.ToList();
-            return View(products);
-        }
-
-        // GET: /Admin/CreateProduct
-        public IActionResult CreateProduct()
-        {
+            var role = HttpContext.Session.GetString("UserRole");
+            if (role != "Admin")
+            {
+                return RedirectToAction("Login");
+            }
             return View();
-        }
-
-        // POST: /Admin/CreateProduct
-        [HttpPost]
-        public IActionResult CreateProduct(Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Products.Add(product);
-                _context.SaveChanges();
-                return RedirectToAction("Dashboard");
-            }
-            return View(product);
-        }
-
-        // POST: /Admin/DeleteProduct/5
-        [HttpPost]
-        public IActionResult DeleteProduct(int id)
-        {
-            var product = _context.Products.Find(id);
-            if (product != null)
-            {
-                _context.Products.Remove(product);
-                _context.SaveChanges();
-            }
-            return RedirectToAction("Dashboard");
         }
     }
 }

@@ -6,77 +6,88 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MobileShop</title>
+    <title>@ViewData["Title"] - GULSHAN TECHSHOP</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand fw-bold text-primary" asp-controller="Home" asp-action="Index">
-                    <i class="fa-solid fa-mobile-screen-button me-2"></i>MobileShop
+            <div class="container">
+                <!-- Brand Name on Left -->
+                <a class="navbar-brand fw-bold text-primary fs-4 me-auto" asp-controller="Home" asp-action="Index">
+                    GULSHAN TECHSHOP
                 </a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end align-items-center">
+                    <!-- Menu Buttons -->
+                    <ul class="navbar-nav mb-2 mb-lg-0 align-items-center me-4">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark fw-semibold px-2" asp-controller="Home" asp-action="Marketplace">Marketplace</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Marketplace">Marketplace</a>
+                            <a class="nav-link text-dark fw-semibold px-2" asp-controller="Home" asp-action="Corporate">Corporate</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Corporate">Corporate</a>
+                            <a class="nav-link text-dark fw-semibold px-2" asp-controller="Home" asp-action="Offers">Offers</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Offers">Offers</a>
+                            <a class="nav-link text-dark fw-semibold px-2" asp-controller="Home" asp-action="Event">Event</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Event">Event</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Blog">Blog</a>
+                            <a class="nav-link text-dark fw-semibold px-2" asp-controller="Home" asp-action="Blog">Blog</a>
                         </li>
                     </ul>
 
-                    <!-- User Profile / Account Section -->
+                    <!-- User Account & Admin Panel Section -->
                     @{
                         var userName = HttpContextAccessor.HttpContext?.Session.GetString("UserName");
                     }
-                    <div class="dropdown ms-3">
-                        @if (!string.IsNullOrEmpty(userName))
-                        {
-                            <a class="text-dark text-decoration-none dropdown-toggle d-flex align-items-center gap-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-user-circle fa-xl text-primary"></i>
-                                <span class="fw-bold text-dark">@userName</span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-3 mt-2">
-                                <li>
-                                    <a class="dropdown-item py-2" asp-controller="Account" asp-action="Profile">
-                                        <i class="fa-solid fa-user me-2 text-primary"></i>My Profile
-                                    </a>
-                                </li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li>
-                                    <a class="dropdown-item py-2 text-danger fw-bold" asp-controller="Account" asp-action="Logout">
-                                        <i class="fa-solid fa-right-from-bracket me-2"></i>Logout
-                                    </a>
-                                </li>
-                            </ul>
-                        }
-                        else
-                        {
-                            <a asp-controller="Account" asp-action="Login" class="text-dark text-decoration-none text-center d-inline-block">
-                                <i class="fa-solid fa-user d-block fs-5 mb-1"></i>
-                                <span style="font-size: 12px; font-weight: 600;">MY ACCOUNT</span>
-                            </a>
-                        }
+                    
+                    <div class="d-flex align-items-center gap-3 ms-2">
+                        <!-- My Account Section -->
+                        <div class="dropdown">
+                            @if (!string.IsNullOrEmpty(userName))
+                            {
+                                <a class="text-dark text-decoration-none dropdown-toggle d-flex align-items-center gap-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-user-circle fa-xl text-primary"></i>
+                                    <span class="fw-bold text-dark">@userName</span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-3 mt-2">
+                                    <li>
+                                        <a class="dropdown-item py-2" asp-controller="Account" asp-action="Profile">
+                                            <i class="fa-solid fa-user me-2 text-primary"></i>My Profile
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item py-2 text-danger fw-bold" asp-controller="Account" asp-action="Logout">
+                                            <i class="fa-solid fa-right-from-bracket me-2"></i>Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            }
+                            else
+                            {
+                                <a asp-controller="Account" asp-action="Login" class="text-dark text-decoration-none text-center d-inline-block">
+                                    <i class="fa-solid fa-user d-block fs-5 mb-1"></i>
+                                    <span style="font-size: 12px; font-weight: 600;">MY ACCOUNT</span>
+                                </a>
+                            }
+                        </div>
+
+                        <!-- Admin Panel Button -->
+                        <a asp-controller="Admin" asp-action="Login" class="text-dark text-decoration-none text-center d-inline-block ms-2">
+                            <i class="fa-solid fa-user-shield d-block fs-5 mb-1 text-danger"></i>
+                            <span style="font-size: 12px; font-weight: 600;">ADMIN PANEL</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -89,9 +100,56 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted py-3 bg-dark text-light mt-auto">
-        <div class="container text-center">
-            &copy; 2026 - MobileShop - All Rights Reserved
+    <!-- Complete Footer with Payment Gateway Icons -->
+    <footer class="bg-dark text-light pt-5 pb-3 mt-auto border-top border-secondary">
+        <div class="container">
+            <div class="row g-4 mb-4">
+                <div class="col-md-4">
+                    <h5 class="fw-bold text-primary mb-3">GULSHAN TECHSHOP</h5>
+                    <p class="text-white-50 small">Your trusted destination for premium gadgets, smartphones, laptops, and authentic electronic accessories in Bangladesh.</p>
+                    <div class="d-flex gap-3 fs-5">
+                        <a href="#" class="text-light"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="text-light"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="text-light"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="text-light"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-6">
+                    <h6 class="fw-bold text-white mb-3">Quick Links</h6>
+                    <ul class="list-unstyled text-white-50 small">
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Index" class="text-decoration-none text-white-50">Home</a></li>
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Marketplace" class="text-decoration-none text-white-50">Marketplace</a></li>
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Corporate" class="text-decoration-none text-white-50">Corporate</a></li>
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Offers" class="text-decoration-none text-white-50">Offers</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 col-6">
+                    <h6 class="fw-bold text-white mb-3">Support</h6>
+                    <ul class="list-unstyled text-white-50 small">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Contact Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Terms & Conditions</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Warranty Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="fw-bold text-white mb-3">We Accept (Payment Gateways)</h6>
+                    <p class="text-white-50 small mb-3">Secured payments powered by SSLCommerz / Digital Gateways:</p>
+                    <!-- Payment Gateway Icons Row -->
+                    <div class="d-flex flex-wrap gap-2 fs-3 text-white">
+                        <span class="badge bg-secondary p-2"><i class="fa-brands fa-cc-visa text-warning"></i> Visa</span>
+                        <span class="badge bg-secondary p-2"><i class="fa-brands fa-cc-mastercard text-danger"></i> Mastercard</span>
+                        <span class="badge bg-secondary p-2"><i class="fa-brands fa-cc-paypal text-info"></i> PayPal</span>
+                        <span class="badge bg-secondary p-2"><i class="fa-solid fa-mobile-screen-button text-success"></i> bKash / Nagad</span>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-secondary">
+
+            <div class="text-center text-white-50 small">
+                &copy; 2026 - GULSHAN TECHSHOP - All Rights Reserved
+            </div>
         </div>
     </footer>
 
