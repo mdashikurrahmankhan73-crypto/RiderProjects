@@ -1,0 +1,46 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Admin Login";
+}
+
+<div class="py-5 bg-light min-vh-100 d-flex align-items-center">
+    <div class="container" style="max-width: 450px;">
+        
+        <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white text-center">
+            
+            <!-- লক আইকন -->
+            <div class="bg-light rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4" style="width: 70px; height: 70px;">
+                <span class="fs-2">🔐</span>
+            </div>
+
+            <h3 class="fw-bold text-dark mb-1">অ্যাডমিন লগইন</h3>
+            <p class="text-muted small mb-4">প্যানেলে প্রবেশ করতে সঠিক সিকিউরিটি তথ্য প্রদান করুন।</p>
+
+            <!-- এরর মেসেজ অ্যালার্ট বার -->
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <div class="alert alert-danger rounded-3 small py-2 mb-3" role="alert">
+                    ❌ @ViewBag.ErrorMessage
+                </div>
+            }
+
+            <form asp-controller="Admin" asp-action="Login" method="post">
+                <div class="text-start mb-3">
+                    <label class="form-label small fw-bold text-secondary">ইউজারনেম (Username)</label>
+                    <input type="text" name="username" class="form-control border-secondary py-2" required placeholder="যেমন: admin" />
+                </div>
+
+                <div class="text-start mb-4">
+                    <label class="form-label small fw-bold text-secondary">পাসওয়ার্ড (Password)</label>
+                    <input type="password" name="password" class="form-control border-secondary py-2" required placeholder="••••••••" />
+                </div>
+
+                <button type="submit" class="btn btn-thalia w-100 py-2.5 rounded-pill fw-bold shadow-sm text-white">
+                    লগইন করুন
+                </button>
+            </form>
+
+        </div>
+        
+    </div>
+</div>

@@ -1,0 +1,333 @@
+{
+  "Files": [
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/obj/Release/net8.0/scopedcss/projectbundle/MobileShop.bundle.scp.css",
+      "PackagePath": "staticwebassets/MobileShop.bundle.scp.css"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/css/site.css",
+      "PackagePath": "staticwebassets/css/site.css"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/favicon.ico",
+      "PackagePath": "staticwebassets/favicon.ico"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/images/Google-Pixel-8-Pro.jpg",
+      "PackagePath": "staticwebassets/images/Google-Pixel-8-Pro.jpg"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/images/OnePlus-12.jpg",
+      "PackagePath": "staticwebassets/images/OnePlus-12.jpg"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/images/Realme-GT-5-Pro.jpg",
+      "PackagePath": "staticwebassets/images/Realme-GT-5-Pro.jpg"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/images/Samsung-Galaxy-A54-5G.jpg",
+      "PackagePath": "staticwebassets/images/Samsung-Galaxy-A54-5G.jpg"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/images/Samsung-Galaxy-S24-Ultra.jpg",
+      "PackagePath": "staticwebassets/images/Samsung-Galaxy-S24-Ultra.jpg"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/images/Xiaomi-14-Ultra.jpg",
+      "PackagePath": "staticwebassets/images/Xiaomi-14-Ultra.jpg"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/images/iPhone-15-Pro-Max.jpg",
+      "PackagePath": "staticwebassets/images/iPhone-15-Pro-Max.jpg"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/images/iPhone-15.jpg",
+      "PackagePath": "staticwebassets/images/iPhone-15.jpg"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/images/products/galaxy-a37-5g.jpg",
+      "PackagePath": "staticwebassets/images/products/galaxy-a37-5g.jpg"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/images/products/google-pixel-8-pro.jpg",
+      "PackagePath": "staticwebassets/images/products/google-pixel-8-pro.jpg"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/images/products/iphone-15-pro-max.jpg",
+      "PackagePath": "staticwebassets/images/products/iphone-15-pro-max.jpg"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/images/products/iphone-15.jpg",
+      "PackagePath": "staticwebassets/images/products/iphone-15.jpg"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/images/products/oneplus-12.jpg",
+      "PackagePath": "staticwebassets/images/products/oneplus-12.jpg"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/images/products/realme-gt-5-pro.jpg",
+      "PackagePath": "staticwebassets/images/products/realme-gt-5-pro.jpg"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/images/products/samsung-galaxy-a54-5g.jpg",
+      "PackagePath": "staticwebassets/images/products/samsung-galaxy-a54-5g.jpg"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/images/products/samsung-galaxy-s24-ultra.jpg",
+      "PackagePath": "staticwebassets/images/products/samsung-galaxy-s24-ultra.jpg"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/images/products/xiaomi-14-ultra.jpg",
+      "PackagePath": "staticwebassets/images/products/xiaomi-14-ultra.jpg"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/js/site.js",
+      "PackagePath": "staticwebassets/js/site.js"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/LICENSE",
+      "PackagePath": "staticwebassets/lib/bootstrap"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.css"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.css.map"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.min.css"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.css"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.css"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.css"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.css.map"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.min.css"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.min.css.map"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.css"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.js"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.js"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.js.map"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.min.js"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/js/bootstrap.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.js"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.js.map"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.min.js"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.min.js.map"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/LICENSE.txt"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/jquery-validation/LICENSE.md",
+      "PackagePath": "staticwebassets/lib/jquery-validation/LICENSE.md"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/jquery-validation/dist/additional-methods.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/additional-methods.js"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/jquery-validation/dist/additional-methods.min.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/additional-methods.min.js"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/jquery-validation/dist/jquery.validate.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/jquery.validate.js"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/jquery.validate.min.js"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/jquery/LICENSE.txt",
+      "PackagePath": "staticwebassets/lib/jquery/LICENSE.txt"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/jquery/dist/jquery.js",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.js"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/jquery/dist/jquery.min.js",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.js"
+    },
+    {
+      "Id": "/home/spiderman/RiderProjects/MobileShop/MobileShop/wwwroot/lib/jquery/dist/jquery.min.map",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.map"
+    },
+    {
+      "Id": "obj/Release/net8.0/staticwebassets/msbuild.MobileShop.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Release/net8.0/staticwebassets/msbuild.build.MobileShop.props",
+      "PackagePath": "build\\MobileShop.props"
+    },
+    {
+      "Id": "obj/Release/net8.0/staticwebassets/msbuild.buildMultiTargeting.MobileShop.props",
+      "PackagePath": "buildMultiTargeting\\MobileShop.props"
+    },
+    {
+      "Id": "obj/Release/net8.0/staticwebassets/msbuild.buildTransitive.MobileShop.props",
+      "PackagePath": "buildTransitive\\MobileShop.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

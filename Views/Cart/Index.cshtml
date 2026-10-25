@@ -1,0 +1,170 @@
+@model IEnumerable<MobileShop.Models.ShoppingCartItem>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Ihr Warenkorb - Shopping Cart";
+    
+    // কার্টের মোট আইটেম মূল্য হিসাব করার লজিক
+    decimal cartTotal = 0;
+    if (Model != null && Model.Any())
+    {
+        foreach (var item in Model)
+        {
+            var price = item.Product.SalePrice > 0 && item.Product.SalePrice < item.Product.OriginalPrice 
+                        ? item.Product.SalePrice 
+                        : item.Product.OriginalPrice;
+            cartTotal += price * item.Quantity;
+        }
+    }
+}
+
+<div class="py-5 bg-light min-vh-100">
+    <div class="container">
+        
+        <!-- Page Heading -->
+        <h1 class="fw-bold text-dark mb-4 h2 d-flex align-items-center gap-2">
+            <span>🛒</span> Ihr Warenkorb <span class="text-muted small fw-normal">(Shopping Cart)</span>
+        </h1>
+
+        <div class="row g-4">
+            
+            <!-- Left Column: Cart Items List -->
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
+                    
+                    @if (Model != null && Model.Any())
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <!-- Single Cart Item Row -->
+                            <div class="row align-items-center g-3 py-3 border-bottom border-light">
+                                
+                                <!-- 1. Product Image -->
+                                <div class="col-3 col-md-2 text-center">
+                                    <div class="bg-light rounded-3 p-2 d-flex align-items-center justify-content-center overflow-hidden" style="height: 80px; width: 80px;">
+                                        @if (item.Product != null && !string.IsNullOrEmpty(item.Product.MainImageUrl))
+                                        {
+                                            <img src="@item.Product.MainImageUrl" class="img-fluid h-100 object-fit-contain" alt="@item.Product.Name" />
+                                        }
+                                        else
+                                        {
+                                            <span class="fs-2 opacity-25">📱</span>
+                                        }
+                                    </div>
+                                </div>
+
+                                <!-- 2. Product Name & Model -->
+                                <div class="col-9 col-md-4">
+                                    <h6 class="fw-bold text-dark mb-1 text-truncate">@(item.Product?.Name ?? "Unknown Product")</h6>
+                                    <small class="text-muted text-uppercase d-block" style="font-size: 0.7rem;">@(item.Product?.Model ?? "")</small>
+                                </div>
+
+                                <!-- 3. Quantity Selector -->
+                                <div class="col-6 col-md-3">
+                                    <form asp-controller="Cart" asp-action="UpdateQuantity" method="post" class="d-flex align-items-center gap-2">
+                                        <input type="hidden" name="cartItemId" value="@item.Id" />
+                                        <select class="form-select border-secondary form-select-sm py-1 fw-bold text-center" name="quantity" onchange="this.form.submit()" style="width: 70px;">
+                                            @for (int i = 1; i <= 5; i++)
+                                            {
+                                                if (i == item.Quantity)
+                                                {
+                                                    <option value="@i" selected>@i</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@i">@i</option>
+                                                }
+                                            }
+                                        </select>
+                                    </form>
+                                </div>
+
+                                <!-- 4. Price & Remove Button -->
+                                <div class="col-6 col-md-3 text-end d-flex flex-column align-items-end justify-content-center">
+                                    <h5 class="fw-bold text-dark m-0" style="font-size: 1.1rem;">
+                                        @{
+                                            var currentPrice = item.Product != null
+                                                ? (item.Product.SalePrice > 0 &&
+                                                   item.Product.SalePrice < item.Product.OriginalPrice
+                                                    ? item.Product.SalePrice
+                                                    : item.Product.OriginalPrice)
+                                                : 0;
+                                        }
+                                        ৳@(currentPrice * item.Quantity)
+                                    </h5>
+                                    
+                                    <form asp-controller="Cart" asp-action="RemoveFromCart" method="post" class="mt-2">
+                                        <input type="hidden" name="cartItemId" value="@item.Id" />
+                                        <button type="submit" class="btn btn-link text-danger p-0 text-decoration-none small">
+                                            ❌ মুছুন
+                                        </button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <!-- Empty Cart UI -->
+                        <div class="text-center py-5">
+                            <span class="display-1 opacity-25 d-block mb-3">🛒</span>
+                            <h4 class="fw-bold text-muted mb-2">Ihr Warenkorb ist leer</h4>
+                            <p class="text-secondary small mb-4">আপনার শপিং কার্টটি বর্তমানে খালি রয়েছে।</p>
+                            <a asp-controller="Home" asp-action="Index" class="btn btn-thalia rounded-pill px-4 py-2.5 fw-bold shadow-sm">
+                                শপিং চালিয়ে যান
+                            </a>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+            <!-- Right Column: Order Pricing Summary -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4 p-4 bg-white position-sticky" style="top: 20px;">
+                    <h5 class="fw-bold text-dark mb-4 pb-2 border-bottom border-light">Gesamtsumme (Summary)</h5>
+                    
+                    <div class="d-flex justify-content-between mb-3 small">
+                        <span class="text-secondary">মোট আইটেম মূল্য:</span>
+                        <span class="fw-bold text-dark">৳@cartTotal</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3 small">
+                        <span class="text-secondary">ডেলিভারি চার্জ:</span>
+                        <span class="text-success fw-bold">ফ্রি</span>
+                    </div>
+
+                    <hr class="border-light my-3">
+
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <span class="fw-bold text-dark">সর্বমোট প্রদেয়:</span>
+                        <h4 class="fw-bold text-thalia-green m-0">৳@cartTotal</h4>
+                    </div>
+
+                    <!-- Checkout Action -->
+                    @if (Model != null && Model.Any())
+                    {
+                        <a asp-controller="Cart" asp-action="Checkout" class="btn btn-thalia w-100 py-3 rounded-pill fw-bold shadow d-flex align-items-center justify-content-center gap-2">
+                            <span>💳</span> অর্ডার সম্পন্ন করুন
+                        </a>
+                    }
+                    else
+                    {
+                        <button class="btn btn-secondary w-100 py-3 rounded-pill fw-bold opacity-50" disabled>
+                            কার্ট খালি আছে
+                        </button>
+                    }
+
+                    <div class="text-center mt-3">
+                        <small class="text-muted" style="font-size: 0.75rem;">
+                            🔒 ১০০% নিরাপদ ও সুরক্ষিত পেমেন্ট গেটওয়ে সমর্থন
+                        </small>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,121 @@
+@model MobileShop.Models.Product
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Create Product";
+}
+
+<div class="py-5 bg-light min-vh-100">
+    <div class="container" style="max-width: 850px;">
+        
+        <!-- Back to Dashboard -->
+        <div class="mb-4">
+            <a asp-action="Dashboard" class="btn btn-sm btn-outline-secondary rounded-pill px-3">
+                ⬅ ড্যাশবোর্ডে ফিরে যান
+            </a>
+        </div>
+
+        <!-- Main Form Card -->
+        <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white">
+            <h2 class="fw-bold text-dark mb-1 h3">📱 নতুন গ্যাজেট এন্ট্রি ফর্ম</h2>
+            <p class="text-muted small mb-4">ডেটাবেজে নতুন স্মার্টফোন বা গ্যাজেট যুক্ত করতে নিচের ফর্মটি পূরণ করুন।</p>
+
+            <form asp-action="CreateProduct" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                
+                <div class="row g-4">
+                    <!-- 1. Product Name -->
+                    <div class="col-md-8">
+                        <label class="form-label small fw-bold text-secondary">প্রোডাক্টের নাম *</label>
+                        <input asp-for="Name" class="form-control border-secondary py-2" required placeholder="যেমন: Google Pixel 9 Pro" />
+                        <span asp-validation-for="Name" class="text-danger small"></span>
+                    </div>
+
+                    <!-- 2. Model -->
+                    <div class="col-md-4">
+                        <label class="form-label small fw-bold text-secondary">মডেল / ভ্যারিয়েন্ট *</label>
+                        <input asp-for="Model" class="form-control border-secondary py-2" required placeholder="যেমন: 12GB/256GB" />
+                        <span asp-validation-for="Model" class="text-danger small"></span>
+                    </div>
+
+                    <!-- 3. Brand -->
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold text-secondary">ব্র্যান্ড *</label>
+                        <select asp-for="BrandId" class="form-select border-secondary py-2" asp-items="ViewBag.Brands" required>
+                            <option value="">-- 브랜드 সিলেক্ট করুন --</option>
+                        </select>
+                    </div>
+
+                    <!-- 4. Category -->
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold text-secondary">ক্যাটাগরি *</label>
+                        <select asp-for="CategoryId" class="form-select border-secondary py-2" asp-items="ViewBag.Categories" required>
+                            <option value="">-- ক্যাটাগরি সিলেক্ট করুন --</option>
+                        </select>
+                    </div>
+
+                    <!-- 5. Original Price -->
+                    <div class="col-md-4">
+                        <label class="form-label small fw-bold text-secondary">মূল দাম *</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-secondary">৳</span>
+                            <input asp-for="OriginalPrice" type="number" step="0.01" class="form-control border-secondary py-2" required placeholder="0.00" />
+                        </div>
+                        <span asp-validation-for="OriginalPrice" class="text-danger small"></span>
+                    </div>
+
+                    <!-- 6. Sale Price -->
+                    <div class="col-md-4">
+                        <label class="form-label small fw-bold text-secondary">ছাড়ের দাম / অফার প্রাইস</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-secondary">৳</span>
+                            <input asp-for="SalePrice" type="number" step="0.01" class="form-control border-secondary py-2" placeholder="0.00" />
+                        </div>
+                        <span asp-validation-for="SalePrice" class="text-danger small"></span>
+                    </div>
+
+                    <!-- 7. Stock Quantity -->
+                    <div class="col-md-4">
+                        <label class="form-label small fw-bold text-secondary">স্টক সংখ্যা *</label>
+                        <input asp-for="StockQuantity" type="number" class="form-control border-secondary py-2" required placeholder="যেমন: 50" />
+                        <span asp-validation-for="StockQuantity" class="text-danger small"></span>
+                    </div>
+
+                    <!-- 8. Promotional Flags -->
+                    <div class="col-12">
+                        <div class="d-flex gap-4 bg-light p-3 rounded-3 border">
+                            <div class="form-check form-switch">
+                                <input asp-for="IsNewArrival" class="form-check-input" type="checkbox">
+                                <label class="form-check-label small fw-bold text-dark" for="IsNewArrival">✨ New Arrival</label>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input asp-for="IsBestseller" class="form-check-input" type="checkbox">
+                                <label class="form-check-label small fw-bold text-dark" for="IsBestseller">🌟 Bestseller</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 9. Image Upload -->
+                    <div class="col-12">
+                        <label class="form-label small fw-bold text-secondary">প্রোডাক্টের মেইন ছবি আপলোড করুন *</label>
+                        <input type="file" name="uploadImage" class="form-control border-secondary py-2" accept="image/*" required />
+                    </div>
+
+                    <!-- 10. Short Description -->
+                    <div class="col-12">
+                        <label class="form-label small fw-bold text-secondary">সংक्षिप्त বিবরণ</label>
+                        <textarea asp-for="ShortDescription" class="form-control border-secondary" rows="3" placeholder="ফোনের ডিসপ্লে, প্রসেসর এবং ক্যামেরা সংক্রান্ত তথ্য এখানে লিখুন..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="mt-5 pt-3 border-top text-end">
+                    <button type="submit" class="btn btn-thalia rounded-pill px-5 py-2.5 fw-bold shadow-sm text-white">
+                        🚀 ডেটাবেজে আপলোড করুন
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

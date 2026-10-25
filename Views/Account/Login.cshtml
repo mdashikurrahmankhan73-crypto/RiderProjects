@@ -1,0 +1,77 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Login / Sign Up";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
+                <div class="text-center mb-4">
+                    <h3 class="fw-bold text-dark">LOGIN / SIGN UP</h3>
+                    <p class="text-muted small">Welcome back! Please login to your account.</p>
+                </div>
+
+                <!-- Google Login Button (Mock) -->
+                <div class="mb-3">
+                    <a href="#" class="btn btn-outline-danger w-100 rounded-pill py-2 fw-bold d-flex align-items-center justify-content-center gap-2 shadow-sm">
+                        <i class="fa-brands fa-google"></i> Continue with Google
+                    </a>
+                </div>
+
+                <div class="text-center text-muted my-2 small"><span>Or</span></div>
+
+                @if (ViewBag.Error != null)
+                {
+                    <div class="alert alert-danger py-2 small">@ViewBag.Error</div>
+                }
+
+                <!-- Tabs for Email vs OTP Login -->
+                <ul class="nav nav-pills nav-fill mb-3 bg-light p-1 rounded-pill" id="loginTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active rounded-pill py-1 small fw-bold" id="password-tab" data-bs-toggle="tab" data-bs-target="#password-pane" type="button" role="tab">Password Login</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link rounded-pill py-1 small fw-bold" id="otp-tab" data-bs-toggle="tab" data-bs-target="#otp-pane" type="button" role="tab">OTP Login</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="loginTabContent">
+                    <!-- Password Login Pane -->
+                    <div class="tab-pane fade show active" id="password-pane" role="tabpanel">
+                        <form asp-action="Login" method="post">
+                            <div class="mb-3">
+                                <label class="form-label text-muted small fw-bold">Email Address</label>
+                                <input type="email" name="email" class="form-control rounded-pill px-3 py-2" placeholder="name@example.com" required />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label text-muted small fw-bold">Password</label>
+                                <input type="password" name="password" class="form-control rounded-pill px-3 py-2" placeholder="••••••••" required />
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100 rounded-pill py-2 fw-bold shadow-sm">Login</button>
+                        </form>
+                    </div>
+
+                    <!-- OTP Login Pane -->
+                    <div class="tab-pane fade" id="otp-pane" role="tabpanel">
+                        <form asp-action="LoginWithOtp" method="post">
+                            <div class="mb-3">
+                                <label class="form-label text-muted small fw-bold">Mobile Number</label>
+                                <input type="text" name="phone" class="form-control rounded-pill px-3 py-2" placeholder="017xxxxxxxx" required />
+                            </div>
+
+                            <button type="submit" class="btn btn-dark w-100 rounded-pill py-2 fw-bold shadow-sm">Get OTP</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <span class="text-muted small">Don't have an account?</span> 
+                    <a asp-action="Register" class="text-primary fw-bold text-decoration-none small">Register Here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

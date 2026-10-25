@@ -1,0 +1,60 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Vielen Dank - Order Success";
+}
+
+<div class="py-5 bg-light min-vh-100 d-flex align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6 text-center">
+                
+                <!-- সাকসেস কার্ড বক্স (Thalia Style) -->
+                <div class="card border-0 shadow-sm rounded-4 p-5 bg-white">
+                    
+                    <!-- বড় এনিমেটেড গ্রিন চেকমর্ক সার্কেল -->
+                    <div class="d-inline-flex align-items-center justify-content-center bg-thalia-green text-white rounded-circle mx-auto mb-4 shadow" style="width: 80px; height: 80px; font-size: 2.5rem;">
+                        ✓
+                    </div>
+
+                    <!-- পেজ হেডিংস -->
+                    <h1 class="fw-bold text-thalia-green h3 mb-2">Vielen Dank für Ihre Bestellung!</h1>
+                    <h4 class="fw-bold text-dark h5 mb-3">আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে।</h4>
+                    
+                    <p class="text-secondary small lh-lg mb-4">
+                        আমাদের কাস্টমার কেয়ার রিপ্রেজেন্টেটিভ খুব শীঘ্রই আপনার মোবাইল নম্বরে কল করে অর্ডারটি কনফার্ম করবেন এবং আপনার দেওয়া ঠিকানায় দ্রুততম সময়ে ফোনটি পৌঁছে দেওয়া হবে।
+                    </p>
+
+                    <!-- ডামি অর্ডার ট্র্যাকিং ইনফো ব্লক -->
+                    <div class="p-3 bg-light rounded-3 mb-4 text-start border border-light">
+                        <div class="d-flex justify-content-between mb-2 small">
+                            <span class="text-muted">অর্ডার স্ট্যাটাস:</span>
+                            <span class="badge bg-warning text-dark fw-bold">প্রক্রিয়াধীন (Pending)</span>
+                        </div>
+                        <div class="d-flex justify-content-between small">
+                            <span class="text-muted">পেমেন্ট স্ট্যাটাস:</span>
+                            <span class="text-success fw-bold">ক্যাশ অন ডেলিভারি</span>
+                        </div>
+                    </div>
+
+                    <!-- অ্যাকশন বাটনসমূহ -->
+                    <div class="d-flex flex-column sm-flex-row gap-2 justify-content-center">
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-thalia rounded-pill px-4 py-2.5 fw-bold shadow-sm">
+                            🏠 মূল হোমপেজে ফিরুন
+                        </a>
+                        <a href="#" class="btn btn-outline-secondary rounded-pill px-4 py-2.5 fw-bold shadow-sm">
+                            📦 আমার অর্ডার ট্র্যাপ করুন
+                        </a>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-top border-light">
+                        <small class="text-muted" style="font-size: 0.75rem;">
+                            হটলাইন সহায়তার জন্য কল করুন: <span class="text-thalia-green fw-bold">+880 1700-000000</span>
+                        </small>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

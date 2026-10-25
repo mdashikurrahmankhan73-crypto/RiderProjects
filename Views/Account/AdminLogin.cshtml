@@ -1,0 +1,35 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Admin Panel Login";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow-lg border-0 rounded-4 p-4 bg-dark text-white">
+                <div class="text-center mb-4">
+                    <i class="fa-solid fa-user-shield fs-1 text-warning"></i>
+                    <h3 class="fw-bold mt-2">Admin Panel Access</h3>
+                    <p class="text-muted small">Please authenticate to enter administration control.</p>
+                </div>
+
+                @if (ViewBag.Error != null)
+                {
+                    <div class="alert alert-danger py-2 small">@ViewBag.Error</div>
+                }
+
+                <form asp-action="AdminLogin" method="post">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold small">Admin Username</label>
+                        <input type="text" name="adminUsername" class="form-control bg-secondary text-white border-0 rounded-3" placeholder="admin" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold small">Admin Password</label>
+                        <input type="password" name="password" class="form-control bg-secondary text-white border-0 rounded-3" placeholder="••••••••" required />
+                    </div>
+                    <button type="submit" class="btn btn-warning w-100 rounded-pill fw-bold py-2 shadow-sm">Login to Admin Panel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

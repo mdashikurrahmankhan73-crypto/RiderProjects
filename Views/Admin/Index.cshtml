@@ -1,0 +1,100 @@
+@model IEnumerable<MobileShop.Models.Product>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Admin Dashboard";
+    var orders = ViewBag.Orders as List<MobileShop.Models.Order>;
+}
+
+<div class="container my-5">
+    <div class="p-4 bg-dark text-white rounded-4 shadow mb-4 d-flex justify-content-between align-items-center">
+        <div>
+            <h2 class="fw-bold mb-1">Admin Dashboard Control Panel</h2>
+            <p class="text-warning mb-0">Logged in as Admin: <strong>@ViewBag.AdminName</strong></p>
+        </div>
+        <a asp-controller="Account" asp-action="Logout" class="btn btn-outline-light rounded-pill btn-sm">Logout</a>
+    </div>
+
+    <div class="row g-4">
+        <!-- Add Product Form -->
+        <div class="col-lg-4">
+            <div class="card shadow border-0 rounded-4 p-4 bg-white">
+                <h5 class="fw-bold mb-3 text-dark"><i class="fa-solid fa-plus-circle text-primary me-2"></i>Add New Product</h5>
+                <form asp-action="AddProduct" method="post">
+                    <div class="mb-2">
+                        <label class="form-label small fw-bold">Product Name</label>
+                        <input type="text" name="Name" class="form-control form-control-sm" required />
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label small fw-bold">Brand / Model</label>
+                        <input type="text" name="Model" class="form-control form-control-sm" required />
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label small fw-bold">Original Price</label>
+                        <input type="number" name="OriginalPrice" class="form-control form-control-sm" required />
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label small fw-bold">Sale Price</label>
+                        <input type="number" name="SalePrice" class="form-control form-control-sm" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Image URL</label>
+                        <input type="text" name="MainImageUrl" class="form-control form-control-sm" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm w-100 rounded-pill fw-bold">Save Product</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Product List & Customer Orders -->
+        <div class="col-lg-8">
+            <div class="card shadow border-0 rounded-4 p-4 bg-white mb-4">
+                <h5 class="fw-bold mb-3 text-dark">Manage Products</h5>
+                <div class="table-responsive" style="max-height: 250px;">
+                    <table class="table table-sm align-middle">
+                        <thead>
+                            <tr><th>Name</th><th>Model</th><th>Price</th><th>Action</th></tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>@item.Model</td>
+                                    <td>৳@item.SalePrice</td>
+                                    <td><a asp-action="DeleteProduct" asp-route-id="@item.Id" class="btn btn-danger btn-sm py-0">Delete</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card shadow border-0 rounded-4 p-4 bg-white">
+                <h5 class="fw-bold mb-3 text-dark">Customer Orders (Cash on Delivery)</h5>
+                <div class="table-responsive" style="max-height: 250px;">
+                    <table class="table table-sm align-middle">
+                        <thead>
+                            <tr><th>Customer</th><th>Phone</th><th>Product</th><th>Amount</th><th>Address</th></tr>
+                        </thead>
+                        <tbody>
+                            @if (orders != null)
+                            {
+                                @foreach (var ord in orders)
+                                {
+                                    <tr>
+                                        <td>@ord.CustomerName</td>
+                                        <td>@ord.Phone</td>
+                                        <td>@ord.ProductName</td>
+                                        <td>৳@ord.TotalPrice</td>
+                                        <td>@ord.Address (@ord.ZipCode)</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

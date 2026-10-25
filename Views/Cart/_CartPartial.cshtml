@@ -1,0 +1,47 @@
+@model IEnumerable<MobileShop.Models.ShoppingCartItem>
+
+@if (Model != null && Model.Any())
+{
+    <ul class="list-group list-group-flush">
+        @foreach (var item in Model)
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                <div class="d-flex align-items-center">
+                    <img src="@item.Product.MainImageUrl" alt="@item.Product.Name" style="width: 60px; height: 60px; object-fit: contain; background: #f8f9fa;" class="rounded me-3 border" />
+                    <div>
+                        <h6 class="mb-0 text-truncate" style="max-width: 150px;">@item.Product.Name</h6>
+                        <small class="text-muted">Qty: @item.Quantity x ৳ @item.Product.SalePrice.ToString("N0")</small>
+                    </div>
+                </div>
+                <span class="fw-bold">৳ @((item.Quantity * item.Product.SalePrice).ToString("N0"))</span>
+            </li>
+        }
+    </ul>
+    
+    <!-- টোটাল এবং চেকআউট বাটন সেকশন -->
+    <div class="mt-4">
+        <h5 class="fw-bold d-flex justify-content-between">
+            <span>Total:</span>
+            <span class="text-success">৳ @Model.Sum(x => x.Quantity * x.Product.SalePrice).ToString("N0")</span>
+        </h5>
+        
+        <!-- সরাসরি চেকআউট করার বাটন (গ্লো ইফেক্টসহ) -->
+        <a href="/Cart/Checkout" class="btn btn-success w-100 mt-3 fw-bold btn-reflect">
+            <i class="bi bi-credit-card"></i> Proceed to Checkout
+        </a>
+        
+        <!-- পুরো কার্ট দেখার বাটন -->
+        <a href="/Cart" class="btn btn-outline-secondary w-100 mt-2">
+            View Full Cart
+        </a>
+    </div>
+}
+else
+{
+    <div class="text-center mt-5">
+        <!-- খালি কার্টের জন্য একটি সুন্দর আইকন -->
+        <i class="bi bi-cart-x text-muted" style="font-size: 3rem;"></i>
+        <p class="text-muted mt-2">Your cart is empty.</p>
+        <a href="/Product" class="btn btn-outline-primary btn-sm rounded-pill px-4">Continue Shopping</a>
+    </div>
+}

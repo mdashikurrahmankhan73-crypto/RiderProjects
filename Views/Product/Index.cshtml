@@ -1,0 +1,70 @@
+@model IEnumerable<MobileShop.Models.Product>
+
+@{
+    ViewData["Title"] = "All Products";
+}
+
+<div class="container mt-4">
+    <!-- Go to Home বাটন সরানো হয়েছে, শুধু হেডিং সেন্টার করা হয়েছে -->
+    <div class="d-flex justify-content-center align-items-center mb-4">
+        <h2 class="fw-bold">Our Products</h2>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info text-center">
+            No products available at the moment.
+        </div>
+    }
+    else
+    {
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="@item.MainImageUrl" class="card-img-top" alt="@item.Name" style="height: 180px; object-fit: cover;">
+                        
+                        <div class="card-body d-flex flex-column">
+                            <h6 class="card-title fw-bold text-truncate">@item.Name</h6>
+                            <p class="card-text text-muted small mb-1">Model: @item.Model</p>
+                            
+                            <!-- Price -->
+                            <p class="card-text mb-2">
+                                <span class="fw-bold text-success">৳ @item.SalePrice.ToString("N2")</span>
+                                @if (item.OriginalPrice > item.SalePrice)
+                                {
+                                    <br />
+                                    <small class="text-muted text-decoration-line-through">৳ @item.OriginalPrice.ToString("N2")</small>
+                                }
+                            </p>
+                            
+                            <!-- Badges -->
+                            <div class="mb-2">
+                                @if (item.IsFeatured)
+                                {
+                                    <span class="badge bg-primary" style="font-size: 0.7rem;">Featured</span>
+                                }
+                                @if (item.IsNewArrival)
+                                {
+                                    <span class="badge bg-success" style="font-size: 0.7rem;">New</span>
+                                }
+                                @if (item.IsBestseller)
+                                {
+                                    <span class="badge bg-warning text-dark" style="font-size: 0.7rem;">Bestseller</span>
+                                }
+                            </div>
+
+                            <!-- Button (শুধুমাত্র Details বাটন) -->
+                            <div class="mt-auto">
+                                <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-primary w-100">
+                                    Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

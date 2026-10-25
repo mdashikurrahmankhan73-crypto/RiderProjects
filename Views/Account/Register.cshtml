@@ -1,0 +1,39 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Customer Registration";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-4 p-4 bg-white">
+                <div class="text-center mb-4">
+                    <i class="fa-solid fa-user-plus fs-1 text-success"></i>
+                    <h3 class="fw-bold mt-2">Create New Account</h3>
+                    <p class="text-muted small">Register to get fast checkout and order tracking.</p>
+                </div>
+
+                <form asp-action="Register" method="post">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold small">Full Name</label>
+                        <input type="text" name="fullName" class="form-control rounded-3" placeholder="Your Name" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold small">Email Address</label>
+                        <input type="email" name="email" class="form-control rounded-3" placeholder="name@example.com" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold small">Password</label>
+                        <input type="password" name="password" class="form-control rounded-3" placeholder="••••••••" required />
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 rounded-pill fw-bold py-2 shadow-sm">Register</button>
+                </form>
+
+                <div class="text-center mt-3">
+                    <span class="small text-muted">Already have an account? </span>
+                    <a asp-action="Login" class="small fw-bold text-success text-decoration-none">Login Here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

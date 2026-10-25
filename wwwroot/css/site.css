@@ -1,0 +1,233 @@
+/* =========================================================
+   Default ASP.NET Core Site.css
+   ========================================================= */
+html {
+  font-size: 14px;
+  position: relative;
+  min-height: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+body {
+  background-color: #f7f8fa; /* হালকা ব্যাকগ্রাউন্ড */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+/* =========================================================
+   Thalia Style Custom CSS (Updated)
+   ========================================================= */
+
+:root {
+  --thalia-green: #005a3c; /* থালিয়ার সিগনেচার সবুজ রঙ */
+  --thalia-light-blue: #e2f0f6; /* হিরো সেকশনের হালকা নীল */
+  --thalia-bg: #f7f8fa;
+}
+
+/* Top Search Bar */
+.thalia-top-bar {
+  background-color: #fff;
+  padding: 15px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.search-bar {
+  border-radius: 20px;
+  background-color: #f1f3f5;
+  border: 1px solid #ced4da;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* Green Navigation Bar */
+.thalia-navbar {
+  background-color: var(--thalia-green) !important;
+  padding: 0;
+}
+
+.thalia-navbar .nav-link {
+  color: white !important;
+  font-weight: 500;
+  padding: 12px 15px;
+  font-size: 0.95rem;
+  border-bottom: 3px solid transparent;
+}
+
+.thalia-navbar .nav-link:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+.thalia-navbar .nav-link.active {
+  border-bottom: 3px solid white;
+}
+
+/* Thalia Hero Section */
+.thalia-hero {
+  background-color: var(--thalia-light-blue);
+  border-radius: 10px;
+  padding: 50px 40px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.thalia-hero-text h1 {
+  font-weight: 700;
+  color: #222;
+  font-size: 3rem;
+  line-height: 1.2;
+}
+
+.btn-thalia-white {
+  background-color: white;
+  color: #222;
+  border-radius: 25px;
+  padding: 10px 30px;
+  font-weight: 600;
+  border: 2px solid #222;
+  transition: 0.3s;
+}
+
+.btn-thalia-white:hover {
+  background-color: #222;
+  color: white;
+}
+
+/* Product Card Hover Effect */
+.product-card {
+  border: none;
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: white;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
+}
+
+.product-img {
+  padding: 20px;
+  height: 220px;
+  object-fit: contain;
+}
+
+/* Extra Typography (যদি প্রয়োজন হয়) */
+.thalia-heading {
+  font-family: 'Georgia', serif;
+  letter-spacing: -0.5px;
+}
+
+/* Global layout */
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: #252525;
+  background: #fff;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Header links and icons */
+.thalia-icon-btn {
+  color: #333 !important;
+  text-decoration: none !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.thalia-icon-btn:hover {
+  color: #004d30 !important;
+}
+
+.thalia-icon-subtext {
+  color: inherit;
+  font-size: 12px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.thalia-icon-btn i {
+  font-size: 21px;
+}
+
+/* Navigation */
+.thalia-navigation {
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.thalia-navigation-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 48px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.thalia-navigation-links a {
+  display: inline-flex;
+  align-items: center;
+  color: #333;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 12px 0;
+  text-decoration: none !important;
+  flex-shrink: 0;
+}
+
+.thalia-navigation-links a:hover {
+  color: #004d30;
+}
+
+.thalia-navigation-links .sale-link {
+  color: #bf0000;
+  font-weight: 700;
+}
+
+/* Responsive layout */
+@media (max-width: 767.98px) {
+  .thalia-navigation-links {
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  .thalia-icon-subtext {
+    font-size: 10px;
+  }
+}

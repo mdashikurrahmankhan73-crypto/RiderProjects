@@ -1,0 +1,137 @@
+@model MobileShop.Models.User
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "My Profile";
+}
+
+<div class="container my-5">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index" class="text-decoration-none"><i class="fa-solid fa-house"></i></a></li>
+            <li class="breadcrumb-item text-muted">My Account</li>
+            <li class="breadcrumb-item active text-primary fw-bold" aria-current="page">My Profile</li>
+        </ol>
+    </nav>
+
+    <h2 class="fw-bold mb-4">My Profile</h2>
+
+    <div class="row">
+        <!-- Sidebar Navigation -->
+        <div class="col-md-3 mb-4">
+            <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
+                <h5 class="fw-bold mb-3 px-3 text-dark">Hello, @Model?.FullName</h5>
+                <div class="list-group list-group-flush rounded-3">
+                    <a href="#" class="list-group-item list-group-item-action active border-0 rounded-3 mb-1"><i class="fa-solid fa-user me-2"></i>My Profile</a>
+                    <a href="#" class="list-group-item list-group-item-action border-0 rounded-3 mb-1 text-muted"><i class="fa-solid fa-address-book me-2"></i>Address Book</a>
+                    <a href="#" class="list-group-item list-group-item-action border-0 rounded-3 mb-1 text-muted"><i class="fa-solid fa-bag-shopping me-2"></i>My Orders</a>
+                    <a href="#" class="list-group-item list-group-item-action border-0 rounded-3 mb-1 text-muted"><i class="fa-solid fa-star me-2"></i>My Reviews</a>
+                    <a href="#" class="list-group-item list-group-item-action border-0 rounded-3 mb-1 text-muted"><i class="fa-solid fa-heart me-2"></i>Wishlist</a>
+                    <a href="#" class="list-group-item list-group-item-action border-0 rounded-3 mb-1 text-muted"><i class="fa-solid fa-coins me-2"></i>TechShopBD Points</a>
+                    <a asp-controller="Account" asp-action="Logout" class="list-group-item list-group-item-action border-0 rounded-3 text-danger fw-bold mt-2"><i class="fa-solid fa-right-from-bracket me-2"></i>Logout</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Form Area -->
+        <div class="col-md-9">
+            <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
+                <h4 class="fw-bold mb-3">Personal Information</h4>
+                
+                <!-- Profile Header Banner -->
+                <div class="card bg-light border-0 rounded-4 p-4 mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-2 text-center position-relative">
+                            <div class="bg-secondary bg-opacity-20 rounded-circle d-flex align-items-center justify-content-center mx-auto text-secondary fw-bold shadow-sm" style="width: 90px; height: 90px; font-size: 28px;">
+                                Profile
+                            </div>
+                            <span class="position-absolute bottom-0 end-25 translate-middle p-2 bg-primary border border-light rounded-circle text-white shadow-sm" style="cursor: pointer;">
+                                <i class="fa-solid fa-camera fa-xs"></i>
+                            </span>
+                        </div>
+                        <div class="col-md-10">
+                            <h4 class="fw-bold text-dark mb-1">@Model?.FullName</h4>
+                            <p class="text-primary mb-1">@Model?.Email</p>
+                            <p class="text-muted small mb-2">Bangladesh</p>
+                            
+                            <div class="d-flex gap-2 flex-wrap">
+                                <span class="badge bg-success-subtle text-success border border-success px-3 py-2 rounded-pill"><i class="fa-solid fa-check me-1"></i>Email Verified</span>
+                                <span class="badge bg-warning-subtle text-warning border border-warning px-3 py-2 rounded-pill"><i class="fa-solid fa-triangle-exclamation me-1"></i>Phone Missing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Update Form matching Screenshot -->
+                <form asp-action="UpdateProfile" method="post">
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label text-muted small fw-bold">First Name <span class="text-danger">*</span></label>
+                            <input type="text" name="FirstName" class="form-control rounded-3 py-2" value="@Model?.FullName" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label text-muted small fw-bold">Last Name</label>
+                            <input type="text" name="LastName" class="form-control rounded-3 py-2" placeholder="Last Name" />
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label text-muted small fw-bold">Email</label>
+                            <input type="email" name="Email" class="form-control rounded-3 py-2" value="@Model?.Email" readonly />
+                            <small class="text-success"><i class="fa-solid fa-circle-check me-1"></i>Verified Email</small>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label text-muted small fw-bold">Phone <span class="text-danger">*</span></label>
+                            <input type="text" name="Phone" class="form-control rounded-3 py-2" value="@Model?.Phone" placeholder="01XXXXXXXXX" required />
+                            <small class="text-warning"><i class="fa-solid fa-circle-exclamation me-1"></i>Phone not added</small>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label text-muted small fw-bold">City <span class="text-danger">*</span></label>
+                            <input type="text" name="City" class="form-control rounded-3 py-2" placeholder="Enter City" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label text-muted small fw-bold">Post Code</label>
+                            <input type="text" name="PostCode" class="form-control rounded-3 py-2" placeholder="Post Code" />
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label text-muted small fw-bold">Country <span class="text-danger">*</span></label>
+                            <input type="text" name="Country" class="form-control rounded-3 py-2" value="Bangladesh" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label text-muted small fw-bold">Billing Address <span class="text-danger">*</span></label>
+                            <input type="text" name="Address" class="form-control rounded-3 py-2" placeholder="Road, building, house No. or familiar area" />
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label text-muted small fw-bold">Password (Leave blank to keep current)</label>
+                            <input type="password" name="Password" class="form-control rounded-3 py-2" placeholder="••••••••" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label text-muted small fw-bold">Confirm Password</label>
+                            <input type="password" name="ConfirmPassword" class="form-control rounded-3 py-2" placeholder="••••••••" />
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-success px-4 py-2 rounded-3 fw-bold shadow-sm">
+                            Continue Shopping
+                        </a>
+                        <button type="submit" class="btn btn-primary px-5 py-2 rounded-3 fw-bold shadow-sm">
+                            Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

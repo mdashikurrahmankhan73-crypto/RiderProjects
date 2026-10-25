@@ -1,0 +1,123 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Kasse - Checkout";
+}
+
+<div class="py-5 bg-light min-vh-100">
+    <div class="container">
+        
+        <!-- ব্রেডক্রাম্ব ও টাইটেল -->
+        <h1 class="fw-bold text-dark mb-4 h2">🔒 Kasse <span class="text-muted small fw-normal">(Checkout)</span></h1>
+
+        <div class="row g-4">
+            <!-- বাম কলাম: শিপিং ও পেমেন্ট ফর্ম -->
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm rounded-4 p-4 bg-white mb-4">
+                    <h5 class="fw-bold text-dark mb-3">১. ডেলিভারি ও শিপিং ঠিকানা</h5>
+                    
+                    <form asp-controller="Order" asp-action="PlaceOrder" method="post" id="checkoutForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold text-secondary">আপনার সম্পূর্ণ নাম *</label>
+                                <input type="text" class="form-control border-secondary" name="CustomerName" required placeholder="যেমন: মো: আরিফ রহমান">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold text-secondary">মোবাইল নম্বর *</label>
+                                <input type="tel" class="form-control border-secondary" name="PhoneNumber" required placeholder="যেমন: 017XXXXXXXX">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small fw-bold text-secondary">ইমেইল ঠিকানা (ঐচ্ছিক)</label>
+                                <input type="email" class="form-control border-secondary" name="Email" placeholder="example@mail.com">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small fw-bold text-secondary">সম্পূর্ণ ঠিকানা (বাসা নং, রোড, এলাকা) *</label>
+                                <textarea class="form-control border-secondary" name="ShippingAddress" rows="3" required placeholder="যেমন: বাসা-১২, রোড-৪, ব্লক-বি, মিরপুর, ঢাকা"></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold text-secondary">শহর / জেলা *</label>
+                                <select class="form-select border-secondary" name="City" required>
+                                    <option value="Dhaka" selected>ঢাকা (Dhaka)</option>
+                                    <option value="Chittagong">চট্টগ্রাম (Chittagong)</option>
+                                    <option value="Sylhet">সিলেট (Sylhet)</option>
+                                    <option value="Rajshahi">রাজশাহী (Rajshahi)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold text-secondary">পোস্টাল কোড / জিপ কোড</label>
+                                <input type="text" class="form-control border-secondary" name="PostalCode" placeholder="যেমন: ১২১৬">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- পেমেন্ট মেথড সেকশন -->
+                <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
+                    <h5 class="fw-bold text-dark mb-3">২. পেমেন্ট পদ্ধতি (Payment Method)</h5>
+                    
+                    <div class="d-flex flex-column gap-3">
+                        <!-- ক্যাশ অন ডেলিভারি -->
+                        <div class="border rounded-3 p-3 d-flex align-items-center justify-content-between bg-light">
+                            <div class="form-check m-0">
+                                <input class="form-check-input border-secondary" type="radio" name="PaymentMethod" id="cod" value="COD" checked>
+                                <label class="form-check-label fw-bold text-dark ms-2" for="cod">
+                                    Cash on Delivery (ক্যাশ অন ডেলিভারি)
+                                </label>
+                            </div>
+                            <span class="fs-4">💵</span>
+                        </div>
+
+                        <!-- বিকাশ / রকেট / নগদ পেমেন্ট -->
+                        <div class="border rounded-3 p-3 d-flex align-items-center justify-content-between opacity-75">
+                            <div class="form-check m-0">
+                                <input class="form-check-input border-secondary" type="radio" name="PaymentMethod" id="onlinePay" value="Online" disabled>
+                                <label class="form-check-label fw-bold text-secondary ms-2" for="onlinePay">
+                                    Mobile Banking (বিকাশ, রকেট, নগদ - সাময়িকভাবে বন্ধ)
+                                </label>
+                            </div>
+                            <span class="fs-4">📱</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ডান কলাম: ফাইনাল অর্ডার সামারি ও কনফার্ম বাটন -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4 p-4 bg-white position-sticky" style="top: 20px;">
+                    <h5 class="fw-bold text-dark mb-4 pb-2 border-bottom border-light">Bestellübersicht (Order Summary)</h5>
+                    
+                    <div class="p-3 bg-light rounded-3 mb-4 small text-secondary">
+                        <i class="fa-solid fa-circle-info text-thalia-green me-1"></i> আপনার কার্টের প্রোডাক্টগুলোর বিবরণ ও মোট হিসাব এখানে চূড়ান্ত করা হবে।
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-3 small">
+                        <span class="text-secondary">শিপিং ও হ্যান্ডেলিং:</span>
+                        <span class="text-success fw-bold">ফ্রি (৳০.০০)</span>
+                    </div>
+
+                    <hr class="border-light my-3">
+
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <span class="fw-bold text-dark">সর্বমোট প্রদেয়:</span>
+                        <h4 class="fw-black text-thalia-green m-0">প্রক্রিয়াধীন</h4>
+                    </div>
+
+                    <!-- ফাইনাল সাবমিট বাটন -->
+                    <button type="submit" form="checkoutForm" class="btn btn-thalia w-100 py-3 rounded-pill fw-bold shadow d-flex align-items-center justify-content-center gap-2">
+                        <span>✅</span> অর্ডার নিশ্চিত করুন
+                    </button>
+
+                    <div class="text-center mt-3">
+                        <small class="text-muted" style="font-size: 0.75rem;">
+                            By clicking, you agree to our Terms & Conditions.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    .fw-black { font-weight: 900 !important; }
+</style>

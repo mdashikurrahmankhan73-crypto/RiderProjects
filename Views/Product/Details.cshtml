@@ -1,0 +1,205 @@
+@model MobileShop.Models.Product
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = Model?.Name ?? "Product Details";
+}
+
+<div class="container my-5">
+    
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index" class="text-decoration-none">Home</a></li>
+            <li class="breadcrumb-item"><a asp-controller="Product" asp-action="Index" class="text-decoration-none">Products</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@(Model?.Name ?? "Product Details")</li>
+        </ol>
+    </nav>
+
+    <!-- Main Details Card -->
+    <div class="card border-0 shadow-lg rounded-4 overflow-hidden p-4 bg-white mb-5">
+        <div class="row g-5 align-items-center">
+            
+            <!-- Product Image -->
+            <div class="col-lg-5 text-center">
+                <div class="bg-light p-4 rounded-4 border position-relative overflow-hidden product-image-box">
+                    <img src="@(Model?.MainImageUrl ?? "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=500&q=80")" 
+                         class="img-fluid rounded-3 shadow-sm" style="max-height: 400px; object-fit: contain;" alt="Product Image" />
+                    <span class="position-absolute top-0 start-0 m-3 badge bg-primary px-3 py-2 text-uppercase fw-bold shadow-sm">
+                        @(Model?.Model ?? "TechShop")
+                    </span>
+                </div>
+            </div>
+
+            <!-- Product Info & Colorful Action Buttons -->
+            <div class="col-lg-7">
+                <div class="mb-2">
+                    <span class="text-warning fs-5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span>
+                    <span class="text-muted small ms-2">(124 Customer Reviews)</span>
+                </div>
+
+                <h1 class="fw-bold text-dark mb-3 display-6">@(Model?.Name ?? "Advanced Flagship Smartphone")</h1>
+
+                <div class="mb-3">
+                    @if (Model?.SalePrice > 0 && Model?.SalePrice < Model?.OriginalPrice)
+                    {
+                        <span class="text-muted text-decoration-line-through fs-5 me-2">৳@Model.OriginalPrice</span>
+                        <span class="fw-bold text-danger display-5">৳@Model.SalePrice</span>
+                        <span class="badge bg-danger ms-2 px-2 py-1 align-top">Save ৳@(Model.OriginalPrice - Model.SalePrice)</span>
+                    }
+                    else
+                    {
+                        <span class="fw-bold text-dark display-5">৳@(Model?.OriginalPrice ?? 85000)</span>
+                    }
+                </div>
+
+                <p class="text-secondary lead fs-6 mb-4">
+                    @(string.IsNullOrEmpty(Model?.Description) ? "Experience next-level performance with stunning display, powerful processor, and professional-grade camera technology built for modern creators and tech enthusiasts." : Model.Description)
+                </p>
+
+                <!-- Colorfull & Eye-Catchy Action Buttons -->
+                <div class="d-flex flex-wrap gap-3 mb-4">
+                    <button class="btn btn-gradient-cart btn-lg px-4 rounded-pill fw-bold shadow-sm d-flex align-items-center gap-2 text-white">
+                        <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                    </button>
+                    <button class="btn btn-gradient-buy btn-lg px-4 rounded-pill fw-bold shadow-sm d-flex align-items-center gap-2 text-white">
+                        <i class="fa-solid fa-bolt"></i> Buy Now
+                    </button>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-outline-dark btn-lg px-4 rounded-pill fw-bold d-flex align-items-center gap-2">
+                        <i class="fa-solid fa-arrow-left"></i> Back to Shop
+                    </a>
+                </div>
+
+                <!-- Quick Highlights Box -->
+                <div class="p-3 bg-light rounded-3 border">
+                    <div class="row text-muted small">
+                        <div class="col-6 mb-2"><i class="fa-solid fa-shield-halved text-success me-2"></i>Official 1 Year Warranty</div>
+                        <div class="col-6 mb-2"><i class="fa-solid fa-truck-fast text-primary me-2"></i>Fast Home Delivery</div>
+                        <div class="col-6"><i class="fa-solid fa-rotate-left text-warning me-2"></i>7 Days Easy Return</div>
+                        <div class="col-6"><i class="fa-solid fa-circle-check text-success me-2"></i>100% Authentic Product</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detailed Specifications Section -->
+    <div class="card border-0 shadow-sm rounded-4 p-4 bg-white mb-5">
+        <h3 class="fw-bold text-dark mb-4 border-bottom pb-2"><i class="fa-solid fa-list-check text-primary me-2"></i>Technical Specifications</h3>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <table class="table table-striped table-borderless small mb-0">
+                    <tbody>
+                        <tr><td class="fw-bold text-muted" style="width: 40%;">Brand / Model</td><td>@(Model?.Model ?? "Apple / Samsung")</td></tr>
+                        <tr><td class="fw-bold text-muted">Display Size</td><td>6.7 inches OLED / AMOLED 120Hz</td></tr>
+                        <tr><td class="fw-bold text-muted">Processor</td><td>Octa-core Ultra High-Speed Chipset</td></tr>
+                        <tr><td class="fw-bold text-muted">RAM & Storage</td><td>8GB / 12GB RAM, 256GB ROM</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-striped table-borderless small mb-0">
+                    <tbody>
+                        <tr><td class="fw-bold text-muted" style="width: 40%;">Main Camera</td><td>Triple 50MP + 12MP + 10MP</td></tr>
+                        <tr><td class="fw-bold text-muted">Front Camera</td><td>32MP HDR Selfie Camera</td></tr>
+                        <tr><td class="fw-bold text-muted">Battery Capacity</td><td>5000 mAh with Fast Charging</td></tr>
+                        <tr><td class="fw-bold text-muted">Operating System</td><td>Latest OS Version</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Eye-Catchy Extra Product Images Gallery -->
+    <div class="card border-0 shadow-sm rounded-4 p-4 bg-white mb-5">
+        <h3 class="fw-bold text-dark mb-4 border-bottom pb-2"><i class="fa-solid fa-images text-primary me-2"></i>Product Gallery</h3>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="bg-light p-2 rounded-3 border text-center">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80" class="img-fluid rounded-2" style="height: 220px; object-fit: cover;" alt="Gallery 1" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="bg-light p-2 rounded-3 border text-center">
+                    <img src="https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=600&q=80" class="img-fluid rounded-2" style="height: 220px; object-fit: cover;" alt="Gallery 2" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="bg-light p-2 rounded-3 border text-center">
+                    <img src="https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=600&q=80" class="img-fluid rounded-2" style="height: 220px; object-fit: cover;" alt="Gallery 3" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Reviews & Comments Section (Registered Users Only) -->
+    <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
+        <h3 class="fw-bold text-dark mb-4 border-bottom pb-2"><i class="fa-solid fa-comments text-primary me-2"></i>Customer Reviews & Feedback</h3>
+        
+        <!-- Comment Writing Form (Only for Registered Users Simulation) -->
+        <div class="p-4 bg-light rounded-4 mb-4 border">
+            <h5 class="fw-bold text-dark mb-3">Write Your Review</h5>
+            <form>
+                <div class="mb-3">
+                    <label class="form-label small fw-bold">Select Rating</label>
+                    <select class="form-select w-auto rounded-3">
+                        <option>⭐⭐⭐⭐⭐ Excellent (Valo Product)</option>
+                        <option>⭐⭐⭐⭐ Good</option>
+                        <option>⭐⭐⭐ Average</option>
+                        <option>⭐ Bad (Kharap Product)</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label small fw-bold">Your Comment (Product ki valo naki kharap?)</label>
+                    <textarea class="form-control rounded-3" rows="3" placeholder="Share your experience about this product..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm">
+                    <i class="fa-solid fa-paper-plane me-1"></i> Post Comment (Registered User)
+                </button>
+            </form>
+        </div>
+
+        <!-- Existing Comments List -->
+        <div class="d-flex flex-column gap-3">
+            <div class="p-3 border rounded-3 bg-white shadow-sm">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                    <h6 class="fw-bold m-0 text-dark"><i class="fa-solid fa-user-circle text-secondary me-1"></i> Ashikur Rahman (Verified Buyer)</h6>
+                    <span class="text-warning small"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                </div>
+                <p class="text-muted small m-0">Product ta khuboi valo! Delivery o khub fast peyechi. Highly recommend this shop.</p>
+            </div>
+
+            <div class="p-3 border rounded-3 bg-white shadow-sm">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                    <h6 class="fw-bold m-0 text-dark"><i class="fa-solid fa-user-circle text-secondary me-1"></i> Tanvir Ahmed (Verified Buyer)</h6>
+                    <span class="text-warning small"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                </div>
+                <p class="text-muted small m-0">Genuine product. Performance darun cholche. Original box & warranty soho peyechi.</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+    .btn-gradient-cart {
+        background: linear-gradient(135deg, #10b981, #059669);
+        border: none;
+        transition: transform 0.2s ease;
+    }
+    .btn-gradient-cart:hover {
+        transform: translateY(-2px);
+        background: linear-gradient(135deg, #059669, #047857);
+    }
+    .btn-gradient-buy {
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+        border: none;
+        transition: transform 0.2s ease;
+    }
+    .btn-gradient-buy:hover {
+        transform: translateY(-2px);
+        background: linear-gradient(135deg, #d97706, #b45309);
+    }
+</style>
