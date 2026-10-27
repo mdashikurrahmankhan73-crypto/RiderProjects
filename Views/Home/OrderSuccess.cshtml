@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "Order Successful - GULSHAN TECHSHOP";
+}
+
+<div class="container my-5 text-center">
+    <div class="card border-0 shadow-lg rounded-4 p-5 col-md-6 mx-auto">
+        <div class="mb-4 text-success">
+            <i class="fa-solid fa-circle-check fa-5x"></i>
+        </div>
+        <h2 class="fw-bold mb-3">Order Successful!</h2>
+        <p class="text-muted mb-4">@TempData["OrderSuccess"]</p>
+        <div class="d-flex justify-content-center gap-3">
+            <a asp-controller="Home" asp-action="Index" class="btn btn-primary fw-bold px-4 py-2">
+                <i class="fa-solid fa-house me-2"></i> Back to Home
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Clear cart from localStorage after successful order placement -->
+<script>
+    localStorage.removeItem('techShopCart');
+</script>

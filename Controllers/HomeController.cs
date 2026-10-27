@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using MobileShop.Models;
 
@@ -14,43 +15,77 @@ namespace MobileShop.Controllers
             _logger = logger;
         }
 
-        // GET: /Home/Index
         public IActionResult Index()
         {
             return View();
         }
 
-        // GET: /Home/Marketplace
         public IActionResult Marketplace()
         {
             return View();
         }
 
-        // GET: /Home/Corporate
         public IActionResult Corporate()
         {
             return View();
         }
 
-        // GET: /Home/Offers
         public IActionResult Offers()
         {
             return View();
         }
 
-        // GET: /Home/Event
         public IActionResult Event()
         {
             return View();
         }
 
-        // GET: /Home/Blog
         public IActionResult Blog()
         {
             return View();
         }
 
-        // GET: /Home/Privacy
+        public IActionResult Details(string name, decimal price, string image)
+        {
+            ViewBag.ProductName = name ?? "iPhone 15 Pro Max";
+            ViewBag.ProductPrice = price > 0 ? price : 1199;
+            ViewBag.ProductImage = image ?? "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400";
+            return View();
+        }
+
+        public IActionResult Checkout(string name, decimal price)
+        {
+            var userName = HttpContext.Session.GetString("UserName");
+            if (string.IsNullOrEmpty(userName))
+            {
+                return RedirectToAction("Login", "Account", new { returnUrl = "/Home/Checkout" });
+            }
+
+            ViewBag.ProductName = name;
+            ViewBag.ProductPrice = price;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult OrderSuccess()
+        {
+            TempData["OrderSuccess"] = "Your Order has been placed successfully via Cash on Delivery!";
+            return View();
+        }
+
+        // GET: /Home/MyOrders (Only accessible for Logged-in Customers)
+        public IActionResult MyOrders()
+        {
+            var userEmail = HttpContext.Session.GetString("UserEmail");
+            if (string.IsNullOrEmpty(userEmail))
+            {
+                return RedirectToAction("Login", "Account", new { returnUrl = "/Home/MyOrders" });
+            }
+
+            ViewBag.UserName = HttpContext.Session.GetString("UserName");
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

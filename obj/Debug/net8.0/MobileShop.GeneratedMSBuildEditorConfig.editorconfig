@@ -82,8 +82,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9CbG9nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/spiderman/RiderProjects/MobileShop/MobileShop/Views/Home/Checkout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DaGVja291dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/spiderman/RiderProjects/MobileShop/MobileShop/Views/Home/Corporate.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Db3Jwb3JhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/spiderman/RiderProjects/MobileShop/MobileShop/Views/Home/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9EZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/spiderman/RiderProjects/MobileShop/MobileShop/Views/Home/Event.cshtml]
@@ -98,8 +106,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9NYXJrZXRwbGFjZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/spiderman/RiderProjects/MobileShop/MobileShop/Views/Home/MyOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9NeU9yZGVycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/spiderman/RiderProjects/MobileShop/MobileShop/Views/Home/Offers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9PZmZlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/spiderman/RiderProjects/MobileShop/MobileShop/Views/Home/OrderSuccess.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9PcmRlclN1Y2Nlc3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/spiderman/RiderProjects/MobileShop/MobileShop/Views/Home/Privacy.cshtml]

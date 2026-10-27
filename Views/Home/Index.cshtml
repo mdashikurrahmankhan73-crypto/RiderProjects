@@ -92,34 +92,7 @@
     </button>
 </div>
 
-<!-- 2. Features Highlights -->
-<div class="container my-5">
-    <div class="row g-4 text-center">
-        <div class="col-md-4">
-            <div class="p-4 border-0 shadow-sm rounded-4 bg-light h-100">
-                <i class="fa-solid fa-truck-fast fa-3x text-primary mb-3"></i>
-                <h5 class="fw-bold">Fast Delivery</h5>
-                <p class="text-muted mb-0">Get your products delivered safely to your doorstep in record time.</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="p-4 border-0 shadow-sm rounded-4 bg-light h-100">
-                <i class="fa-solid fa-shield-halved fa-3x text-success mb-3"></i>
-                <h5 class="fw-bold">100% Authentic</h5>
-                <p class="text-muted mb-0">All products are sourced directly from official brand manufacturers.</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="p-4 border-0 shadow-sm rounded-4 bg-light h-100">
-                <i class="fa-solid fa-headset fa-3x text-danger mb-3"></i>
-                <h5 class="fw-bold">24/7 Support</h5>
-                <p class="text-muted mb-0">Our support team is always ready to assist you with your queries.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 3. Featured 20 Products Grid -->
+<!-- 2. Featured 20 Products Grid -->
 <div class="container my-5" id="featured-products">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
@@ -181,20 +154,51 @@
                         </div>
                         <h5 class="fw-bold text-primary mb-3">$@prices[index]</h5>
                         
-                        <!-- Add to Cart & Buy Now Buttons -->
+                        <!-- Add to Cart & Details Buttons -->
                         <div class="mt-auto d-flex flex-column gap-2">
                             <button type="button" class="btn btn-primary btn-sm fw-bold w-100 py-2 add-to-cart-btn" 
                                     data-name="@productNames[index]" data-price="@prices[index]" data-img="@images[index]">
                                 <i class="fa-solid fa-cart-plus me-1"></i> Add to Cart
                             </button>
-                            <a asp-controller="Account" asp-action="Login" class="btn btn-warning btn-sm fw-bold text-dark w-100 py-2">
-                                <i class="fa-solid fa-bolt me-1"></i> Buy Now
+                            <a asp-controller="Home" asp-action="Details" 
+                               asp-route-name="@productNames[index]" 
+                               asp-route-price="@prices[index]" 
+                               asp-route-image="@images[index]" 
+                               class="btn btn-outline-dark btn-sm fw-bold w-100 py-2">
+                                <i class="fa-solid fa-circle-info me-1"></i> Details
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
         }
+    </div>
+</div>
+
+<!-- 3. Features Highlights (Placed right above the Footer) -->
+<div class="container my-5 pt-3">
+    <div class="row g-4 text-center">
+        <div class="col-md-4">
+            <div class="p-4 border-0 shadow-sm rounded-4 bg-light h-100">
+                <i class="fa-solid fa-truck-fast fa-3x text-primary mb-3"></i>
+                <h5 class="fw-bold">Fast Delivery</h5>
+                <p class="text-muted mb-0">Get your products delivered safely to your doorstep in record time.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 border-0 shadow-sm rounded-4 bg-light h-100">
+                <i class="fa-solid fa-shield-halved fa-3x text-success mb-3"></i>
+                <h5 class="fw-bold">100% Authentic</h5>
+                <p class="text-muted mb-0">All products are sourced directly from official brand manufacturers.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 border-0 shadow-sm rounded-4 bg-light h-100">
+                <i class="fa-solid fa-headset fa-3x text-danger mb-3"></i>
+                <h5 class="fw-bold">24/7 Support</h5>
+                <p class="text-muted mb-0">Our support team is always ready to assist you with your queries.</p>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -222,19 +226,28 @@
                 <span id="cartTotalPrice" class="text-primary">$0.00</span>
             </div>
             <div class="d-grid gap-2">
-                <a asp-controller="Account" asp-action="Login" class="btn btn-warning btn-lg fw-bold text-dark py-2 shadow-sm">
+                <button type="button" id="checkoutBtn" class="btn btn-warning btn-lg fw-bold text-dark py-2 shadow-sm">
                     <i class="fa-solid fa-bag-shopping me-2"></i> Buy Now (Checkout)
-                </a>
+                </button>
                 <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="offcanvas">Continue Shopping</button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- JavaScript for Add to Cart & Offcanvas Interaction -->
+<!-- JavaScript for Add to Cart, Session Check & Offcanvas Interaction -->
 @section Scripts {
     <script>
+        // Ensure a brand new visit starts with a completely empty cart
         let cart = [];
+        if (!sessionStorage.getItem('isVisited')) {
+            localStorage.removeItem('techShopCart');
+            sessionStorage.setItem('isVisited', 'true');
+        } else {
+            cart = JSON.parse(localStorage.getItem('techShopCart')) || [];
+        }
+
+        updateCartUI();
 
         document.querySelectorAll('.add-to-cart-btn').forEach(button => {
             button.addEventListener('click', function () {
@@ -242,7 +255,6 @@
                 const price = parseFloat(this.getAttribute('data-price'));
                 const img = this.getAttribute('data-img');
 
-                // Check if product already exists in cart
                 const existingItem = cart.find(item => item.name === name);
                 if (existingItem) {
                     existingItem.quantity += 1;
@@ -250,19 +262,41 @@
                     cart.push({ name, price, img, quantity: 1 });
                 }
 
-                updateCartUI();
+                saveAndClothUpdate();
 
-                // Open the right-side cart offcanvas automatically
                 const cartOffcanvasElement = document.getElementById('cartOffcanvas');
                 const cartOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(cartOffcanvasElement);
                 cartOffcanvas.show();
             });
         });
 
+        // Check C# Session login state rendered in JS
+        const isUserLoggedIn = '@Context.Session.GetString("UserEmail")' !== '';
+
+        document.getElementById('checkoutBtn').addEventListener('click', function () {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+
+            if (isUserLoggedIn) {
+                window.location.href = '/Home/Checkout';
+            } else {
+                window.location.href = '/Account/Login?returnUrl=/Home/Checkout';
+            }
+        });
+
+        function saveAndClothUpdate() {
+            localStorage.setItem('techShopCart', JSON.stringify(cart));
+            updateCartUI();
+        }
+
         function updateCartUI() {
             const cartItemsList = document.getElementById('cartItemsList');
             const cartCount = document.getElementById('cartCount');
             const cartTotalPrice = document.getElementById('cartTotalPrice');
+
+            if (!cartCount) return;
 
             cartCount.innerText = cart.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -298,7 +332,7 @@
 
         function removeItem(index) {
             cart.splice(index, 1);
-            updateCartUI();
+            saveAndClothUpdate();
         }
     </script>
 }

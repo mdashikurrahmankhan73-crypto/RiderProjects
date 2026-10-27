@@ -10,18 +10,19 @@ namespace MobileShop.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-    public AccountController(ApplicationDbContext context)
-    {
-        _context = context;
-    }
-
-        public IActionResult Login()
+        public AccountController(ApplicationDbContext context)
         {
+            _context = context;
+        }
+
+        public IActionResult Login(string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
 
         [HttpPost]
-        public IActionResult Login(string email, string password)
+        public IActionResult Login(string email, string password, string returnUrl = null)
         {
             var user = _context.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
             if (user != null)
@@ -35,6 +36,13 @@ namespace MobileShop.Controllers
                     return RedirectToAction("Dashboard", "Admin");
                 }
 
+                // If returnUrl exists, redirect to requested page (e.g. MyOrders or Checkout)
+                if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                {
+                    return Redirect(returnUrl);
+                }
+
+                // Default fallback is Home Index
                 return RedirectToAction("Index", "Home");
             }
 
@@ -43,12 +51,11 @@ namespace MobileShop.Controllers
         }
 
         [HttpPost]
-        public IActionResult LoginWithOtp(string phone)
+        public IActionResult LoginWithOtp(string phone, string returnUrl = null)
         {
             var user = _context.Users.FirstOrDefault(u => u.Phone == phone);
             if (user == null)
             {
-                // Auto register for demo if phone not found
                 user = new User
                 {
                     FullName = "User_" + phone,
@@ -64,31 +71,41 @@ namespace MobileShop.Controllers
             HttpContext.Session.SetString("UserEmail", user.Email ?? "");
             HttpContext.Session.SetString("UserRole", user.Role);
 
+            if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+
             return RedirectToAction("Index", "Home");
         }
 
-        public IActionResult Register()
+        public IActionResult Register(string returnUrl = null)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
 
         [HttpPost]
-        public IActionResult Register(User user)
+        public IActionResult Register(User user, string returnUrl = null)
         {
             if (ModelState.IsValid)
             {
                 if (string.IsNullOrEmpty(user.Role))
                 {
                     user.Role = "Customer";
-                    
                 }
 
                 _context.Users.Add(user);
-                _context.SaveChanges(); // Database- e save hobe
+                _context.SaveChanges();
 
                 HttpContext.Session.SetString("UserName", user.FullName ?? "Customer");
                 HttpContext.Session.SetString("UserEmail", user.Email ?? "");
                 HttpContext.Session.SetString("UserRole", user.Role);
+
+                if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                {
+                    return Redirect(returnUrl);
+                }
 
                 return RedirectToAction("Index", "Home");
             }
@@ -111,7 +128,7 @@ namespace MobileShop.Controllers
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
-            return RedirectToAction("Index", "Home");
+            return Content("<script>localStorage.removeItem('techShopCart'); sessionStorage.clear(); window.location.href='/Home/Index';</script>", "text/html");
         }
     }
 }

@@ -1,6 +1,8 @@
 @{
     Layout = "_Layout";
-    ViewData["Title"] = "Login / Sign Up";
+    var returnUrl = Context.Request.Query["returnUrl"].ToString();
+    bool isMyOrders = returnUrl.Contains("MyOrders");
+    ViewData["Title"] = isMyOrders ? "Login to View Orders" : "Login / Sign Up";
 }
 
 <div class="container my-5">
@@ -8,11 +10,11 @@
         <div class="col-md-5">
             <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
                 <div class="text-center mb-4">
-                    <h3 class="fw-bold text-dark">LOGIN / SIGN UP</h3>
+                    <h3 class="fw-bold text-dark">@ViewData["Title"]</h3>
                     <p class="text-muted small">Welcome back! Please login to your account.</p>
                 </div>
 
-                <!-- Google Login Button (Mock) -->
+                <!-- Google Login Button -->
                 <div class="mb-3">
                     <a href="#" class="btn btn-outline-danger w-100 rounded-pill py-2 fw-bold d-flex align-items-center justify-content-center gap-2 shadow-sm">
                         <i class="fa-brands fa-google"></i> Continue with Google
@@ -39,7 +41,7 @@
                 <div class="tab-content" id="loginTabContent">
                     <!-- Password Login Pane -->
                     <div class="tab-pane fade show active" id="password-pane" role="tabpanel">
-                        <form asp-action="Login" method="post">
+                        <form asp-action="Login" asp-route-returnUrl="@returnUrl" method="post">
                             <div class="mb-3">
                                 <label class="form-label text-muted small fw-bold">Email Address</label>
                                 <input type="email" name="email" class="form-control rounded-pill px-3 py-2" placeholder="name@example.com" required />
@@ -56,7 +58,7 @@
 
                     <!-- OTP Login Pane -->
                     <div class="tab-pane fade" id="otp-pane" role="tabpanel">
-                        <form asp-action="LoginWithOtp" method="post">
+                        <form asp-action="LoginWithOtp" asp-route-returnUrl="@returnUrl" method="post">
                             <div class="mb-3">
                                 <label class="form-label text-muted small fw-bold">Mobile Number</label>
                                 <input type="text" name="phone" class="form-control rounded-pill px-3 py-2" placeholder="017xxxxxxxx" required />
@@ -67,10 +69,14 @@
                     </div>
                 </div>
 
-                <div class="text-center mt-4">
-                    <span class="text-muted small">Don't have an account?</span> 
-                    <a asp-action="Register" class="text-primary fw-bold text-decoration-none small">Register Here</a>
-                </div>
+                <!-- Show Register link ONLY if NOT coming from My Orders -->
+                @if (!isMyOrders)
+                {
+                    <div class="text-center mt-4">
+                        <span class="text-muted small">Don't have an account?</span> 
+                        <a asp-action="Register" class="text-primary fw-bold text-decoration-none small">Register Here</a>
+                    </div>
+                }
             </div>
         </div>
     </div>

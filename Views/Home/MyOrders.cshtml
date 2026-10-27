@@ -1,0 +1,109 @@
+@{
+    ViewData["Title"] = "My Orders - GULSHAN TECHSHOP";
+    var userEmail = Context.Session.GetString("UserEmail");
+    var userName = Context.Session.GetString("UserName");
+}
+
+<div class="container my-5">
+    @if (string.IsNullOrEmpty(userEmail))
+    {
+        <!-- Redirect or Show Login Prompt -->
+        <div class="row justify-content-center">
+            <div class="col-md-5 text-center">
+                <div class="card border-0 shadow-lg rounded-4 p-5">
+                    <i class="fa-solid fa-user-lock fa-4x text-warning mb-3"></i>
+                    <h4 class="fw-bold mb-2">Login Required</h4>
+                    <p class="text-muted mb-4">You need to log in to view your order history and tracking status.</p>
+                    <a href="/Account/Login?returnUrl=/Home/MyOrders" class="btn btn-primary btn-lg fw-bold px-4 rounded-pill shadow">
+                        <i class="fa-solid fa-right-to-bracket me-2"></i> Go to Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <!-- Show Customer's Order Status List Directly -->
+        <div class="card border-0 shadow-lg rounded-4 p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-3">
+                <div>
+                    <h3 class="fw-bold text-primary mb-1">
+                        <i class="fa-solid fa-boxes-packing me-2"></i> My Purchased Orders
+                    </h3>
+                    <p class="text-muted small mb-0">Track your order statuses and details</p>
+                </div>
+                <span class="badge bg-success px-3 py-2 rounded-pill fs-6"><i class="fa-solid fa-user me-1"></i> @userName</span>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Product Details</th>
+                            <th>Price</th>
+                            <th>Payment Method</th>
+                            <th>Order Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myOrdersTableBody">
+                        <!-- Dynamic User Specific Orders -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const tableBody = document.getElementById('myOrdersTableBody');
+            if (!tableBody) return;
+
+            const currentUserEmail = '@userEmail';
+            const storageKey = 'techShopOrders_' + currentUserEmail;
+
+            // Load logged in user specific orders
+            let orders = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+            if (orders.length === 0) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="text-center py-5 text-muted">
+                            <i class="fa-solid fa-box-open fa-3x mb-3 text-secondary"></i>
+                            <p class="mb-0 fw-semibold">No orders placed yet from this account.</p>
+                        </td>
+                    </tr>`;
+                return;
+            }
+
+            let html = '';
+            orders.forEach(order => {
+                let statusBadge = order.status === "Delivered" 
+                    ? `<span class="badge bg-success px-3 py-2 rounded-pill"><i class="fa-solid fa-check-circle me-1"></i> Delivered</span>`
+                    : `<span class="badge bg-warning text-dark px-3 py-2 rounded-pill"><i class="fa-solid fa-truck me-1"></i> Processing</span>`;
+
+                html += `
+                    <tr>
+                        <td class="fw-bold text-secondary">${order.id}</td>
+                        <td>
+                            <div class="d-flex align-items-center gap-3">
+                                <img src="${order.img}" alt="${order.name}" class="rounded" style="width: 55px; height: 55px; object-fit: cover;">
+                                <div>
+                                    <h6 class="fw-bold mb-0">${order.name}</h6>
+                                    <small class="text-muted">Quantity: ${order.qty}</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="fw-bold text-primary">$${parseFloat(order.price).toFixed(2)}</td>
+                        <td><span class="badge bg-light text-dark border"><i class="fa-solid fa-hand-holding-dollar me-1"></i> ${order.method}</span></td>
+                        <td>${statusBadge}</td>
+                    </tr>
+                `;
+            });
+
+            tableBody.innerHTML = html;
+        });
+    </script>
+}
